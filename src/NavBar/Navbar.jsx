@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom"
+import GoogleLoginButton from "../auth/GoogleLoginButton"
 
 const Navbar = () => {
     return (
@@ -8,9 +9,7 @@ const Navbar = () => {
             </div>
             <input type="text" className="inline-block py-0.5 bg-slate-300 rounded-full text-left px-8 w-1/3 text-2xl" placeholder="🔎Search" />
             <div className="flex-auto float-right w-1/3">
-                <button className="px-2 py-1 rounded-full text-center border-gray-800 border mx-3 float-right">Sign up</button>
-                <button className="px-2 py-1 rounded-full text-center border-gray-800 border mx-3 float-right">Login</button>
-                <NavLink to='/profile' className="px-2 py-1 rounded-full text-center border-gray-800 border mx-3 float-right">Profile</NavLink>
+                <GoogleLoginButton />
             </div>
         </nav >
     )
