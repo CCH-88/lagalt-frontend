@@ -1,17 +1,16 @@
 import { GoogleLogin, GoogleLogout} from 'react-google-login';
 import { gapi } from 'gapi-script';
-import { useState } from 'react';
 import styles from '../mystyle.module.css'
 import { STORAGE_KEY_TOKEN } from "../const/storageKeys";
 import { storageDelete, storageSave } from '../utils/storage';
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { useUser } from '../context/UserContext';
+import profileLogo from '../assets/profile.svg'
 
 
 function GoogleLoginButton() {
     const {user, setUser} = useUser()
     const clientId = '141431554013-7gv41pk9m7j3lh6mv61t67gbkmo68tad.apps.googleusercontent.com';
-    const navigate = useNavigate()
     var auth2;
 
     gapi.load('auth2', function(){
@@ -42,7 +41,7 @@ function GoogleLoginButton() {
                     <div>
                         <NavLink to='/profile' className={styles.profileButton}>
                             <div className={styles.profileButtonLogo}>
-                                <img src='../../public/profile.svg' />
+                                <img src={profileLogo} />
                             </div>
                             <span className={styles.profileButtonText}>
                                 Profile
