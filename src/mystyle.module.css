@@ -42,7 +42,28 @@
     background-color: white;
 }
 
-.projectView {
+.projectViewCard {
     background-color: white;
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-left: 4px;
+    float: left;
+}
 
+h2.projectView {
+    background-color: #DAE0E6;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    margin-top: 34px;
+    margin-left: 20px;
+}
+
+.membersCard {
+    background-color: D9D9D9;
+}
+
+.membersList {
+    background-color: white;
+    float: right;
+    margin-right: 16px;
 }

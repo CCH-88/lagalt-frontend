@@ -1,8 +1,9 @@
 import ProjectCard from "../components/Project/ProjectCard"
 import withAuth from "../hoc/withAuth"
-import MembersCard from "../components/Project/MembersCard"
+import MembersList from "../components/Project/MembersList"
 import { useEffect, useState } from "react"
 import { checkForProject } from "../api/project"
+import styles from "../mystyle.module.css"
 
 const ProjectView = () => {
 
@@ -31,9 +32,9 @@ const ProjectView = () => {
         <>
             {project !== null &&
                 <>
-                    <h2>{project.name} - {project.owner} - Date posted</h2>
+                    <h2 className={styles.projectView}>{project.name} - {project.owner} - Date posted</h2>
                     <ProjectCard project={project} />
-                    <MembersCard project={project} />
+                    <MembersList project={project} />
                 </>}
 
         </>
