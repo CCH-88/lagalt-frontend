@@ -1,5 +1,4 @@
-
-.profileButton{
+.profileButton {
     background-color: rgb(255, 255, 255);
     display: inline-flex;
     align-items: center;
@@ -16,24 +15,24 @@
     height: 2.5rem;
 }
 
-.profileButton:hover{
+.profileButton:hover {
     color: rgba(0, 0, 0, 0.4);
 
 }
 
-.profileButtonLogo{
+.profileButtonLogo {
     margin-right: 10px;
     background: rgb(255, 255, 255);
     padding: 10px;
     border-radius: 2px;
 }
 
-.profileButtonText{
+.profileButtonText {
     padding: 10px 10px 10px 0px;
     font-weight: 500;
 }
 
-.profileCard{
+.profileCard {
     float: right;
     height: 800px;
     width: 30%;
@@ -41,4 +40,9 @@
     margin: 1%;
     border-radius: 5px;
     background-color: white;
+}
+
+.projectView {
+    background-color: white;
+
 }
