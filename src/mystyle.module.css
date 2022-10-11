@@ -56,11 +56,29 @@ h2.projectView {
     margin-top: 10px;
     margin-left: 20px;
     padding-left: 4px;
+    border-radius: 5px;
+    width: 60%;
     float: left;
 }
 
 .membersList {
     background-color: white;
     float: right;
+    width: 30%;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 16px;
+    margin-left: 20px;
+}
+
+h2.membersList {
+    margin-top: 23px;
+    margin-bottom: 7px;
+}
+
+.memberCard {
+    background-color: grey;
+    border-radius: 5px;
+    margin-left: 16px;
     margin-right: 16px;
 }

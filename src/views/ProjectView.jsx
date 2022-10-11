@@ -24,7 +24,7 @@ const ProjectView = () => {
 
     useEffect(() => {
         if (project === null) {
-            getProject(1)
+            getProject(2)
         }
     }, [])
 

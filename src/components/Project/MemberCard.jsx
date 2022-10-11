@@ -1,11 +1,11 @@
 import styles from "../../mystyle.module.css"
 
-const MemberCard = ({ project }) => {
+const MemberCard = ({ members }) => {
     return (
-        <div className={styles.memberCard}>
-            <h1>hi</h1>
-            <p>{project.id}</p>
-        </div>
+        <ul className={styles.memberCard}>
+            <p>Member 1</p>
+
+        </ul>
     )
 }
 
