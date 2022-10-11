@@ -62,6 +62,7 @@ h2.projectView {
 }
 
 .membersList {
+    display: grid;
     background-color: white;
     float: right;
     width: 30%;
@@ -72,13 +73,33 @@ h2.projectView {
 }
 
 h2.membersList {
+    font-family: Roboto, sans-serif;
+    font-size: 32px;
+    margin-left: 25px;
     margin-top: 23px;
     margin-bottom: 7px;
 }
 
+ul.membersList {
+    width: auto;
+}
+
 .memberCard {
-    background-color: grey;
+    background-color: #D9D9D9;
     border-radius: 5px;
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-bottom: 25px;
+    height: 50px;
+    padding-top: 11px;
+    padding-left: 9px;
+}
+
+.memberCardButton {
+    background-color: #949798;
+    font-family: Roboto, sans-serif;
+    float: right;
+    font-size: 12px;
+    border-radius: 20px;
+    margin-right: 10px;
+    height: 25px;
+    width: 95px;
 }

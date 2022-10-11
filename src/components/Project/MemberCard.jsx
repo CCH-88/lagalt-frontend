@@ -1,11 +1,15 @@
 import styles from "../../mystyle.module.css"
 
-const MemberCard = ({ members }) => {
+const MemberCard = ({ member }) => {
+
+
+
     return (
         <ul className={styles.memberCard}>
-            <p>Member 1</p>
-
+            {member.name}
+            <button className={styles.memberCardButton}>Go to profile</button>
         </ul>
+
     )
 }
 

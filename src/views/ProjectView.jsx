@@ -34,7 +34,7 @@ const ProjectView = () => {
                 <>
                     <h2 className={styles.projectView}>{project.name} - {project.owner} - Date posted</h2>
                     <ProjectCard project={project} />
-                    <MembersList project={project} />
+                    <MembersList members={project.members} />
                 </>}
         </div>
     )
