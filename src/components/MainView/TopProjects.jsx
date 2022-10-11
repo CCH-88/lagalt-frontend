@@ -1,9 +1,9 @@
-const TopProjects = () => {
-    return (
+function TopProjects() {
+  return (
     <div>
-        <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-        
-        <div className="rounded overflow-hidden shadow-lg">
+      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+
+        <div className="rounded overflow-hidden shadow-lg bg-white">
           <img className="w-full" src={"../src/assets/mountain.jpg"} alt="Mountain"></img>
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">Mountain</div>
@@ -17,8 +17,8 @@ const TopProjects = () => {
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
           </div>
         </div>
-        
-        <div className="rounded overflow-hidden shadow-lg">
+
+        <div className="rounded overflow-hidden shadow-lg bg-white">
           <img className="w-full" src={"../src/assets/river.jpg"} alt="River"></img>
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">River</div>
@@ -32,9 +32,9 @@ const TopProjects = () => {
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#summer</span>
           </div>
         </div>
-    
-       
-        <div className="rounded overflow-hidden shadow-lg">
+
+
+        <div className="rounded overflow-hidden shadow-lg bg-white">
           <img className="w-full" src={"../src/assets/forest.jpg"} alt="Forest"></img>
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">Forest</div>
@@ -50,6 +50,6 @@ const TopProjects = () => {
         </div>
       </div>
     </div>
-    )
+  )
 } 
 export default TopProjects
