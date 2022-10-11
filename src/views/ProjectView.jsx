@@ -29,15 +29,14 @@ const ProjectView = () => {
     }, [])
 
     return (
-        <>
+        <div>
             {project !== null &&
                 <>
                     <h2 className={styles.projectView}>{project.name} - {project.owner} - Date posted</h2>
                     <ProjectCard project={project} />
                     <MembersList project={project} />
                 </>}
-
-        </>
+        </div>
     )
 }
 

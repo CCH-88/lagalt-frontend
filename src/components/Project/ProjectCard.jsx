@@ -2,10 +2,10 @@ import styles from '../../mystyle.module.css'
 
 const ProjectCard = ({ project }) => {
     return (
-        <div className={styles.projectViewCard}>
+        <p className={styles.projectCard}>
             <p>{project.name}</p>
             <p>{project.description}</p>
-        </div>
+        </p>
     )
 }
 

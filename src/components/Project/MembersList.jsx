@@ -1,10 +1,11 @@
 import styles from "../../mystyle.module.css"
-import ProjectCard from "./ProjectCard"
+import MemberCard from "./MemberCard"
 
 const MembersList = ({ project }) => {
     <div className={styles.membersList}>
-        <ProjectCard project={project} />
+        <p>Hello</p>
+        <MemberCard project={project} />
     </div>
 }
 
-export default MembersList
+export default MembersList;
