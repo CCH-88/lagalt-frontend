@@ -3,49 +3,65 @@ import ProfileCard from "../components/Profile/ProfileCard";
 import ProfilePortfolio from "../components/Profile/ProfilePortfolio";
 import { useUser } from "../context/UserContext";
 import withAuth from "../hoc/withAuth";
-import { useForm } from "react-hook-form";
 import { checkForUser } from "../api/user";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Spinner from "../components/utils/Spinner";
 
 const ProfileView = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
   const { user, setUser } = useUser();
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [friends, setFriends] = useState([]);
+  let { userId } = useParams();
+  const url = window.location.pathname.split("/").pop();
+  let props = {
+    user: user,
+    friends: friends,
+  };
 
   useEffect(() => {
-    getProfile();
-  }, []);
+    console.log(props);
+    getProfile(userId);
+  }, [url]);
 
-  const getProfile = async () => {
+  const getProfile = async (id) => {
     setLoading(true);
-    let id = searchParams.get("id");
+    setUser(null);
     const [checkError, userResponse] = await checkForUser(id);
     if (checkError !== null) {
       setApiError(checkError);
     }
     if (userResponse !== null) {
       setUser(userResponse);
+      props.user = userResponse;
+      getFriends(userResponse.friends);
     }
+    setLoading(false);
+  };
+
+  const getFriends = async (collection) => {
+    setLoading(true);
+    setFriends([]);
+    for (const id of collection) {
+      const [checkError, userResponse] = await checkForUser(id);
+      setFriends((friends) => [...friends, userResponse]);
+    }
+    props.friends = friends;
     setLoading(false);
   };
 
   return (
     <>
-      {loading && <p>Logging in...</p>}
-      {apiError && <p>{apiError}</p>}
-
-      {user !== null && (
-        <div>
-          <ProfileCard user={user} />
-          <ProfilePortfolio user={user} />
+      {user !== null && friends !== null && (
+        <div className="w-full h-full inline-block">
+          <ProfileCard user={user} friends={friends} />
+          <ProfilePortfolio user={user} friends={friends} />
         </div>
       )}
+      <div className="w-full h-full inline-block">
+        {loading && <Spinner />}
+        {apiError && <p>{apiError}</p>}
+      </div>
     </>
   );
 };

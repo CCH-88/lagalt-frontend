@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import styles from "../../mystyle.module.css";
 
-const ProfileCard = ({ user }) => {
+const ProfileCard = ({ user, friends }) => {
   return (
     <div className={styles.profileCard}>
       <p className="text-2xl text-slate-600 m-5">{user.name}</p>
@@ -20,6 +21,21 @@ const ProfileCard = ({ user }) => {
       )}
       <p className="text-2xl text-slate-600 m-5">Description</p>
       <p className="text-l text-slate-600 m-5">{user.description}</p>
+      <p className="text-xl text-slate-600 m-5">Friends</p>
+
+      {friends.length > 1 && (
+        <ul className="flex">
+          {friends.map((txt) => (
+            <Link
+              to={`/profile/${txt.id}`}
+              key={txt.name}
+              className="bg-gray-200 hover:bg-gray-300 duration-300 rounded-full px-4 py-2 font-light text-sm mx-auto"
+            >
+              {txt.name}
+            </Link>
+          ))}
+        </ul>
+      )}
 
       {user.hidden && <p>Hidden profile</p>}
       {!user.hidden && <p>Not hidden profile</p>}

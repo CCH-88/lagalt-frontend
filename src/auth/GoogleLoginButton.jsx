@@ -20,7 +20,7 @@ function GoogleLoginButton() {
   });
 
   const onSuccess = (res) => {
-    setUser(res.profileObj);
+    //setUser(res.profileObj);
     storageSave(STORAGE_KEY_TOKEN, res.tokenObj.access_token);
   };
 
@@ -38,7 +38,7 @@ function GoogleLoginButton() {
       {user ? (
         <div className="flex">
           <div>
-            <NavLink to="/profile" className={styles.profileButton}>
+            <NavLink to="/profile/1" className={styles.profileButton}>
               <div className={styles.profileButtonLogo}>
                 <img src={profileLogo} />
               </div>
