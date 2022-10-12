@@ -8,11 +8,11 @@ function ProjectList() {
             <li>
                 <ListProjectCard />
             </li>
-            <br></br>
+            
             <li>
                 <ListProjectCard />
             </li>
-            <br></br>
+            
             <li>
                 <ListProjectCard />
             </li>
