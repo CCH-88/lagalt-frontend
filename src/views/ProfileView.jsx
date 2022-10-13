@@ -44,9 +44,13 @@ const ProfileView = () => {
     setFriends([]);
     for (const id of collection) {
       const [checkError, userResponse] = await checkForUser(id);
-      setFriends((friends) => [...friends, userResponse]);
+      if (checkError !== null) {
+        setApiError(checkError);
+      }
+      if (userResponse !== null) {
+        setFriends((friends) => [...friends, userResponse]);
+      }
     }
-    props.friends = friends;
     setLoading(false);
   };
 

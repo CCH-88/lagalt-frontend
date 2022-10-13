@@ -20,7 +20,7 @@ function GoogleLoginButton() {
   });
 
   const onSuccess = (res) => {
-    //setUser(res.profileObj);
+    setUser(res.profileObj);
     storageSave(STORAGE_KEY_TOKEN, res.tokenObj.access_token);
   };
 

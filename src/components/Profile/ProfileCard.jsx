@@ -23,7 +23,7 @@ const ProfileCard = ({ user, friends }) => {
       <p className="text-l text-slate-600 m-5">{user.description}</p>
       <p className="text-xl text-slate-600 m-5">Friends</p>
 
-      {friends.length > 1 && (
+      {friends.length > 0 && (
         <ul className="flex">
           {friends.map((txt) => (
             <Link
