@@ -28,7 +28,7 @@ function TopProjects() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts?_limit=3")
+    fetch("https://633fd672d1fcddf69caaa419.mockapi.io/api/v1/project")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -47,13 +47,13 @@ function TopProjects() {
             <div className="rounded overflow-hidden shadow-lg bg-white">
               <img
                 className="w-full"
-                src={"../src/assets/forest.jpg"}
+                src={post.images}
                 alt="Forest"
               ></img>
 
               <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">{post.title}</div>
-                <p className="text-gray-700 text-base">{post.body}</p>
+                <div className="font-bold text-xl mb-2">{post.name}</div>
+                <p className="text-gray-700 text-base">{post.description}</p>
               </div>
 
               <div className="px-6 pt-4 pb-2">
