@@ -2,7 +2,7 @@ import { createHeaders } from "./index";
 const apiUrl = "https://633fd672d1fcddf69caaa419.mockapi.io/api/v1";
 
 export async function checkProject(name) {
-  try {
+  try {    
     console.log(name);
     const response = await fetch(`${apiUrl}/project/?name=${name}`);
     if (!response.ok) {
@@ -43,7 +43,9 @@ export async function createProject(name) {
   }
 }
 
-export async function insertProject(name) {
+export async function insertProject() {
+  const name = "Baum";
+
   const [checkError, project] = await checkProject(name);
   
   if(checkError !== null){
@@ -52,7 +54,7 @@ export async function insertProject(name) {
   }
   
   if (project.length > 0) {
-    //Did not find the user. Removes the last element in project and returns it....
+    //Found the user. Returns the last item in the array...
     return [null, project.pop()];
   }
 

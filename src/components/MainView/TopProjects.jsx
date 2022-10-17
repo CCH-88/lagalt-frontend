@@ -1,55 +1,77 @@
+import { checkProject, insertProject } from "../../api/project";
+import { storageSave } from "../../utils/storage";
+//import {  } from 'react-router-dom';
+import { useState, useEffect } from "react";
+
+/*async function onLoad() {
+  const [error, projectName] = await insertProject();
+  
+  //Local state
+  //If something went wrong while fetching data....
+  const [ apiError, setApiError ] = useState(null);
+  
+  
+  if(error !== null){    
+    //setApiError = error;
+    setApiError(error)
+    console.log(setApiError);
+  }
+  if(projectName !== null){
+    storageSave('aProject', projectName)
+  }
+
+  console.log('Error', error);
+  console.log('Project name', projectName);
+}*/
+
 function TopProjects() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts?_limit=3")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setPosts(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
   return (
-    <div>
-      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+    <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+      {posts.map(function (post) {
+        return (
+          <div className="rounded overflow-hidden shadow-lg bg-white">
+            <div className="rounded overflow-hidden shadow-lg bg-white">
+              <img
+                className="w-full"
+                src={"../src/assets/forest.jpg"}
+                alt="Forest"
+              ></img>
 
-        <div className="rounded overflow-hidden shadow-lg bg-white">
-          <img className="w-full" src={"../src/assets/mountain.jpg"} alt="Mountain"></img>
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">Mountain</div>
-            <p className="text-gray-700 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.
-            </p>
-          </div>
-          <div className="px-6 pt-4 pb-2">
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
-          </div>
-        </div>
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{post.title}</div>
+                <p className="text-gray-700 text-base">{post.body}</p>
+              </div>
 
-        <div className="rounded overflow-hidden shadow-lg bg-white">
-          <img className="w-full" src={"../src/assets/river.jpg"} alt="River"></img>
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">River</div>
-            <p className="text-gray-700 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.
-            </p>
+              <div className="px-6 pt-4 pb-2">
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  #photography
+                </span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  #travel
+                </span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  #fall
+                </span>
+              </div>
+            </div>
           </div>
-          <div className="px-6 pt-4 pb-2">
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#summer</span>
-          </div>
-        </div>
-
-
-        <div className="rounded overflow-hidden shadow-lg bg-white">
-          <img className="w-full" src={"../src/assets/forest.jpg"} alt="Forest"></img>
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">Forest</div>
-            <p className="text-gray-700 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.
-            </p>
-          </div>
-          <div className="px-6 pt-4 pb-2">
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#fall</span>
-          </div>
-        </div>
-      </div>
+        );
+      })}
     </div>
-  )
-} 
-export default TopProjects
+  );
+}
+export default TopProjects;
