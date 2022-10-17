@@ -2,7 +2,9 @@ import styles from "../../mystyle.module.css"
 import MemberCard from "./MemberCard"
 
 const MembersList = ({ members }) => {
-
+    if(members === undefined){
+        return
+    }
     const membersList = members.map(
         (member, index) => <MemberCard key={index} member={member} />)
 

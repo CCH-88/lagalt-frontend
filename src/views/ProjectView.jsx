@@ -2,17 +2,21 @@ import ProjectCard from "../components/Project/ProjectCard"
 import withAuth from "../hoc/withAuth"
 import MembersList from "../components/Project/MembersList"
 import { useEffect, useState } from "react"
-import { checkForProject } from "../api/project"
+import { checkProject } from "../api/project"
 import styles from "../mystyle.module.css"
+import { useParams } from "react-router-dom"
+import Spinner from "../components/utils/Spinner"
 
 const ProjectView = () => {
 
     const [loading, setLoading] = useState(false)
     const [apiError, setApiError] = useState(null)
     const [project, setProject] = useState(null)
+    let { projectId } = useParams();
+
     const getProject = async (id) => {
         setLoading(true);
-        const [checkError, projectResponse] = await checkForProject(id)
+        const [checkError, projectResponse] = await checkProject(id)
         if (checkError !== null) {
             setApiError(checkError)
         }
@@ -23,20 +27,23 @@ const ProjectView = () => {
     }
 
     useEffect(() => {
-        if (project === null) {
-            getProject(2)
-        }
+        getProject(projectId)
     }, [])
 
     return (
-        <div>
-            {project !== null &&
+        <>
+            {(project !== null) &&
                 <>
                     <h2 className={styles.projectView}>{project.name} - {project.owner} - Date posted</h2>
                     <ProjectCard project={project} />
                     <MembersList members={project.members} />
                 </>}
-        </div>
+            <div className="w-full h-full inline-block">
+                {loading && <Spinner />}
+                {apiError && <p>{apiError}</p>}
+            </div>
+        </>
+
     )
 }
 

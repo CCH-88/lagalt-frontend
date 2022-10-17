@@ -20,7 +20,6 @@ const ProfileView = () => {
   };
 
   useEffect(() => {
-    console.log(props);
     getProfile(userId);
   }, [url]);
 
@@ -59,7 +58,7 @@ const ProfileView = () => {
       {user !== null && friends !== null && (
         <div className="w-full h-full inline-block">
           <ProfileCard user={user} friends={friends} />
-          <ProfilePortfolio user={user} friends={friends} />
+          <ProfilePortfolio user={user} />
         </div>
       )}
       <div className="w-full h-full inline-block">

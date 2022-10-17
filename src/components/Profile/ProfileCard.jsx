@@ -24,7 +24,7 @@ const ProfileCard = ({ user, friends }) => {
       <p className="text-xl text-slate-600 m-5">Friends</p>
 
       {friends.length > 0 && (
-        <ul className="flex">
+        <ul className="flex mx-2 my-2">
           {friends.map((txt) => (
             <Link
               to={`/profile/${txt.id}`}
@@ -36,9 +36,6 @@ const ProfileCard = ({ user, friends }) => {
           ))}
         </ul>
       )}
-
-      {user.hidden && <p>Hidden profile</p>}
-      {!user.hidden && <p>Not hidden profile</p>}
     </div>
   );
 };
