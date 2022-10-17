@@ -1,10 +1,9 @@
 import { createHeaders } from "./index";
 const apiUrl = "https://633fd672d1fcddf69caaa419.mockapi.io/api/v1";
 
-export async function checkProject(name) {
+export async function checkProject(id) {
   try {    
-    console.log(name);
-    const response = await fetch(`${apiUrl}/project/?name=${name}`);
+    const response = await fetch(`${apiUrl}/project/${id}`);
     if (!response.ok) {
       throw new Error("Could not complete request.");
     }

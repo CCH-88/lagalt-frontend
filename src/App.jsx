@@ -4,6 +4,7 @@ import Navbar from "./NavBar/Navbar";
 import ProfileView from "./views/ProfileView";
 import MainView from "./views/MainView";
 import EditProfileView from "./views/EditProfileView";
+import ProjectView from "./views/ProjectView";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
           <Route path="/" element={<MainView />} />
           <Route path="/profile">
             <Route path=":userId" element={<ProfileView />} />
+          </Route>
+          <Route path="/project">
+            <Route path=":projectId" element={<ProjectView />} />
           </Route>
           <Route path="/editprofile" element={<EditProfileView />} />
         </Routes>
