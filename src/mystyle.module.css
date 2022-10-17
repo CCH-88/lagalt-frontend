@@ -1,5 +1,4 @@
-
-.profileButton{
+.profileButton {
     background-color: rgb(255, 255, 255);
     display: inline-flex;
     align-items: center;
@@ -16,29 +15,118 @@
     height: 2.5rem;
 }
 
-.profileButton:hover{
+.profileButton:hover {
     color: rgba(0, 0, 0, 0.4);
-
 }
 
-.profileButtonLogo{
+.profileButtonLogo {
     margin-right: 10px;
     background: rgb(255, 255, 255);
     padding: 10px;
     border-radius: 2px;
 }
 
-.profileButtonText{
+.profileButtonText {
     padding: 10px 10px 10px 0px;
     font-weight: 500;
 }
 
-.profileCard{
+.profileCard {
     float: right;
-    height: 800px;
+    height: 80vh;
     width: 30%;
     display: block;
     margin: 1%;
     border-radius: 5px;
     background-color: white;
+}
+
+h2.projectView {
+    background-color: #DAE0E6;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    margin-top: 34px;
+    margin-left: 20px;
+}
+
+.projectCard {
+    background-color: white;
+    display: grid;
+    font-family: Roboto, sans-serif;
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-left: 4px;
+    border-radius: 5px;
+    width: 60%;
+    float: left;
+}
+
+h1.projectCard {
+    font-size: 40px;
+    width: auto;
+}
+
+.membersList {
+    display: grid;
+    background-color: white;
+    float: right;
+    width: 30%;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 16px;
+    margin-left: 20px;
+}
+
+h2.membersList {
+    font-family: Roboto, sans-serif;
+    font-size: 32px;
+    margin-left: 25px;
+    margin-top: 23px;
+    margin-bottom: 7px;
+}
+
+ul.membersList {
+    width: auto;
+}
+
+.memberCard {
+    background-color: #D9D9D9;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    height: 50px;
+    padding-top: 11px;
+    padding-left: 9px;
+}
+
+.memberCardButton {
+    background-color: #949798;
+    font-family: Roboto, sans-serif;
+    float: right;
+    font-size: 12px;
+    border-radius: 20px;
+    margin-right: 10px;
+    height: 25px;
+    width: 95px;
+    background-color: rgb(243 244 246);
+}
+
+.profilePortfolio{
+    float: left;
+    height: 80vh;
+    width: 60%;
+    display: block;
+    margin: 1%;
+    border-radius: 5px;
+    background-color: white;
+    background-color: rgb(243 244 246);
+}
+
+.profileSkills{
+    display: inline-block;
+    background-color: cornflowerblue;
+    border-radius: 30px;
+    margin: auto;
+    padding: 10px 10px 10px 10px;
+    font-weight: 500;
+    text-align: center;
 }
