@@ -39,7 +39,7 @@ const EditProfileView = () => {
         <>
             {(accSettings && user) &&
                 <div className="w-full h-full inline-block">
-                    <div className="flex w-11/12 h-16 bg-white mx-auto mt-24 mb-1">
+                    <div className="flex w-11/12 h-16 bg-white mx-auto mt-12 mb-1">
                         <p className="text-2xl mx-4 my-auto">Profile settings</p>
                     </div>
                     <div className="flex w-11/12 h-16 bg-white mx-auto">

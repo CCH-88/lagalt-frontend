@@ -5,6 +5,7 @@ import ProfileView from "./views/ProfileView";
 import MainView from "./views/MainView";
 import EditProfileView from "./views/EditProfileView";
 import ProjectView from "./views/ProjectView";
+import CreateProjectView from "./views/CreateProjectView";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path=":projectId" element={<ProjectView />} />
           </Route>
           <Route path="/editprofile" element={<EditProfileView />} />
+          <Route path="/createproject" element={<CreateProjectView/>}/>
         </Routes>
       </div>
     </BrowserRouter>

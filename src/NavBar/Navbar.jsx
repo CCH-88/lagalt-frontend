@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom"
+import styles from "../mystyle.module.css";
 import GoogleLoginButton from "../auth/GoogleLoginButton"
+import profileLogo from "../assets/profile.svg";
 
 const Navbar = () => {
     return (
@@ -8,9 +10,17 @@ const Navbar = () => {
                 <NavLink to='/' className="inline-block text-blue-500 text-2xl my-auto font-bold">Lagalt</NavLink>
             </div>
             <input type="text" className="inline-block py-0.5 bg-slate-300 rounded-full text-left px-8 w-1/3 text-2xl" placeholder="🔎Search" />
-            <div className="flex-auto float-right w-1/3">
+            <div className="inline-flex float-right w-1/3 mx-0">
+                <NavLink to='/createproject' className={styles.profileButton}>Create new project</NavLink>
+                <NavLink to="/profile/1" className={styles.profileButton}>
+                    <div className={styles.profileButtonLogo}>
+                        <img src={profileLogo} />
+                    </div>
+                    <span className={styles.profileButtonText}>Profile</span>
+                </NavLink>
                 <GoogleLoginButton />
             </div>
+
         </nav >
     )
 }

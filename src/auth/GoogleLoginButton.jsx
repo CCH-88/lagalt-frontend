@@ -1,11 +1,8 @@
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { gapi } from "gapi-script";
-import styles from "../mystyle.module.css";
 import { STORAGE_KEY_TOKEN } from "../const/storageKeys";
 import { storageDelete, storageSave } from "../utils/storage";
-import { NavLink } from "react-router-dom";
 import { useUser } from "../context/UserContext";
-import profileLogo from "../assets/profile.svg";
 
 function GoogleLoginButton() {
   const { user, setUser } = useUser();
@@ -37,14 +34,6 @@ function GoogleLoginButton() {
     <div className="px-2 mx-3 float-right">
       {user ? (
         <div className="flex">
-          <div>
-            <NavLink to="/profile/1" className={styles.profileButton}>
-              <div className={styles.profileButtonLogo}>
-                <img src={profileLogo} />
-              </div>
-              <span className={styles.profileButtonText}>Profile</span>
-            </NavLink>
-          </div>
           <GoogleLogout
             className="h-10"
             clientId={clientId}
@@ -54,7 +43,7 @@ function GoogleLoginButton() {
         </div>
       ) : (
         <GoogleLogin
-          className="h-10"
+          className="h-10 mx-0"
           clientId={clientId}
           buttonText="Sign in with Google"
           onSuccess={onSuccess}
