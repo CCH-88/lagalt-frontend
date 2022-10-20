@@ -19,18 +19,6 @@
     color: rgba(0, 0, 0, 0.4);
 }
 
-.profileButtonLogo {
-    margin-right: 10px;
-    background: rgb(255, 255, 255);
-    padding: 10px;
-    border-radius: 2px;
-}
-
-.profileButtonText {
-    padding: 10px 10px 10px 0px;
-    font-weight: 500;
-}
-
 .profileCard {
     float: right;
     height: fit-content;
