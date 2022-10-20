@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
 import styles from "../mystyle.module.css";
-import GoogleLoginButton from "../auth/GoogleLoginButton"
 import profileLogo from "../assets/profile.svg";
+import { AuthButton } from "../auth/KeyCloakAuth";
 
 const Navbar = () => {
     return (
@@ -18,7 +18,9 @@ const Navbar = () => {
                     </div>
                     <span className={styles.profileButtonText}>Profile</span>
                 </NavLink>
-                <GoogleLoginButton />
+                <div>
+                    <AuthButton/>
+                </div>
             </div>
 
         </nav >
