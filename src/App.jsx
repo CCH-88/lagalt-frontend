@@ -6,8 +6,8 @@ import MainView from './views/MainView'
 import EditProfileView from './views/EditProfileView'
 import ProjectView from './views/ProjectView'
 import CreateProjectView from './views/CreateProjectView'
-import { ReactKeycloakProvider} from '@react-keycloak/web'
-import  keycloak from './auth/keycloak'
+import { ReactKeycloakProvider } from '@react-keycloak/web'
+import keycloak from './auth/keycloak'
 
 function App() {
 	return (
@@ -18,12 +18,11 @@ function App() {
 					<Routes>
 						<Route path="/" element={<MainView />} />
 						<Route path="/profile">
-							<Route path=":userId" element={<ProfileView />} />
+							<Route path=":userId" element={<ProfileView />} children={[<Route path="editprofile" element={<EditProfileView />} />]} />
 						</Route>
 						<Route path="/project">
 							<Route path=":projectId" element={<ProjectView />} />
 						</Route>
-						<Route path="/editprofile" element={<EditProfileView />} />
 						<Route path="/createproject" element={<CreateProjectView />} />
 					</Routes>
 				</div>
