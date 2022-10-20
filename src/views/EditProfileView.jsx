@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from 'react-hook-form'
 import Toggle from "../components/utils/Toggle/Toggle";
 import { useUser } from "../context/UserContext";
+import withAuth from "../hoc/withAuth";
 
 const EditProfileView = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -138,4 +139,4 @@ const EditProfileView = () => {
     )
 }
 
-export default EditProfileView
+export default withAuth(EditProfileView)

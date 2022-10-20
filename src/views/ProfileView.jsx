@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import ProfileCard from "../components/Profile/ProfileCard";
 import ProfilePortfolio from "../components/Profile/ProfilePortfolio";
 import { useUser } from "../context/UserContext";
-import withAuth from "../hoc/withAuth";
 import { checkForUser } from "../api/user";
 import { useParams } from "react-router-dom";
 import Spinner from "../components/utils/Spinner";
@@ -69,4 +68,4 @@ const ProfileView = () => {
   );
 };
 
-export default withAuth(ProfileView);
+export default ProfileView;
