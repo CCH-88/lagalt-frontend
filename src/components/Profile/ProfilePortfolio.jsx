@@ -1,0 +1,20 @@
+import styles from "../../mystyle.module.css";
+import ProfileProjectCard from "./ProfileProjectCard";
+
+const ProfilePortfolio = ({ user }) => {
+  return (
+    <div className={styles.profilePortfolio}>
+      <p className="text-2xl text-slate-600 m-5">Portfolio</p>
+      {user.portfolio && (
+        <ul className="">
+          {user.portfolio.map((project) => (
+              <ProfileProjectCard project={project} key={project}>
+            </ProfileProjectCard>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+export default ProfilePortfolio;

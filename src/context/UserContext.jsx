@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
+//Context -> exposing
 const UserContext = createContext()
 
 export const useUser = () => {
