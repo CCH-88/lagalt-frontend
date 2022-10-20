@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+.base-btn {
+  @apply text-lg border-2 rounded-xl px-3 py-1 font-semibold;
+}
