@@ -5,17 +5,15 @@ const keycloak = new Keycloak({
  clientId: import.meta.env.VITE_keycloak_client,
 });
 
-keycloak.updateToken(25).then( (refreshed)=> {
-    if(refreshed) {
-      alert("Token refresh succesful")
-    }
-    else {
-      throw new Error("Error updating token")
-    }
-  }).
- catch ((error) => {
-  // TODO better this
-  alert(error)  
-} )
+/* keycloak.updateToken(5)
+    .then(function(refreshed) {
+        if (refreshed) {
+            alert('Token was successfully refreshed');
+        } else {
+            alert('Token is still valid');
+        }
+    }).catch(function() {
+        alert('Failed to refresh the token, or the session has expired');
+    }); */
 export default keycloak;
 
