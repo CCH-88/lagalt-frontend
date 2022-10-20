@@ -9,11 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "gapi-script": "^1.2.0",
+    "@react-keycloak/web": "^3.4.0",
+    "keycloak-js": "^16.1.1",
     "npm": "^8.19.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-google-login": "^5.2.2",
     "react-hook-form": "^7.37.0",
     "react-router-dom": "^6.4.2",
     "vite-react": "^0.7.1"
