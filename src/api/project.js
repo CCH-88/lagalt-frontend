@@ -1,5 +1,7 @@
 import { createHeaders } from "./index";
-const apiUrl = "https://633fd672d1fcddf69caaa419.mockapi.io/api/v1";
+
+const apiUrl = import.meta.env.VITE_RENDER_API
+
 
 export async function checkProject(id) {
   try {    
@@ -14,9 +16,8 @@ export async function checkProject(id) {
   }
 }
 
-export async function createProject(name) {
+export async function createProject(name, ownerId, description, field, progress) {
   try {
-    console.log(name);
     const response = await fetch(apiUrl, {
         method: 'POST',
         //headers: createHeaders(), "Use this, createHeaders-funtion, when an API-key is needed.... 
@@ -24,10 +25,10 @@ export async function createProject(name) {
         //Stringify because HTTP does not understand javascript. It only understands strings...        
         body: JSON.stringify({
             name,
-            owner,
+            ownerId,
             description,
-            images,
-            members: []
+            field,
+            progress
         })
     });
     if (!response.ok) {

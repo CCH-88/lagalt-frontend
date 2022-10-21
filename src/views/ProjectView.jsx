@@ -39,8 +39,8 @@ const ProjectView = () => {
           </h2>
           <ProjectCard project={project} />
           <MembersList members={project.members} />
-          <MessageBoard />
-          <PostMessage />
+          <MessageBoard chat={project.chat} />
+          <PostMessage chatId={project.chatid}/>
         </>
       )}
       <div className="w-full h-full inline-block">

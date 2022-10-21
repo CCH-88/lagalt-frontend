@@ -1,6 +1,6 @@
 import styles from "../../mystyle.module.css";
 
-const MessageBoard = () => {
+const MessageBoard = ({chat}) => {
   return (
     <div className={styles.projectCard}>
       <h1 className="text-xl m-2">Messageboard</h1>

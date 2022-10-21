@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import styles from "../../mystyle.module.css";
 import postmessage from "../../assets/sendmessage.svg";
+import { chatAdd } from "../../api/messageboard";
 
-const PostMessage = () => {
+const PostMessage = ({chatid}) => {
   const {
     register,
     handleSubmit,
@@ -14,7 +15,8 @@ const PostMessage = () => {
     if (input.target.message.value.length < 1) {
       console.log("message too short");
     } else {
-      console.log(input.target.message.value);
+      chatAdd()
+      console.log(input.target.message.value + " " + chatid);
     }
     input.target.reset();
   };

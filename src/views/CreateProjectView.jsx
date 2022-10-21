@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from 'react-hook-form'
+import { createProject } from "../api/project";
 import Toggle from "../components/utils/Toggle/Toggle";
 import { useUser } from "../context/UserContext";
 
@@ -10,9 +11,10 @@ const CreateProjectView = () => {
     }
 
     const { register, handleSubmit, formState: { errors } } = useForm()
+    const { user } = useUser();
 
     const onSubmit = async (input) => {
-        console.log(input);
+        createProject(input.projectname, 1, input.projectdescription, input.projectfield, input.projectstatus);
     }
 
     const errorMessageProjectName = (() => {
@@ -88,7 +90,7 @@ const CreateProjectView = () => {
                     </form>
                     {errorMessageDescription}
                 </div>
-                <div className="flex flex-wrap w-11/12  bg-white mx-auto mb-2">
+                {/* <div className="flex flex-wrap w-11/12  bg-white mx-auto mb-2">
                     <p className="text-xl mx-4 my-2">Project image</p>
                     <div className="w-full"></div>
                     <form className="w-full">
@@ -100,7 +102,7 @@ const CreateProjectView = () => {
                                 {...register("projectimageurl")} />
                         </fieldset>
                     </form>
-                </div>
+                </div> */}
                 <div className="flex flex-wrap w-11/12  bg-white mx-auto mb-2">
                     <p className="text-xl mx-4 my-2">Project field</p>
                     <div className="w-full"></div>
