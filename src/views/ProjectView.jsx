@@ -7,7 +7,7 @@ import styles from "../mystyle.module.css"
 import { useParams } from "react-router-dom"
 import Spinner from "../components/utils/Spinner"
 
-const ProjectView = () => {
+function ProjectView() {
 
     const [loading, setLoading] = useState(false)
     const [apiError, setApiError] = useState(null)
@@ -15,15 +15,15 @@ const ProjectView = () => {
     let { projectId } = useParams();
 
     const getProject = async (id) => {
-        setLoading(true);
-        const [checkError, projectResponse] = await checkProject(id)
+        setLoading(true)
+        const [checkError, projectResponse] = await checkForProject(id)
         if (checkError !== null) {
             setApiError(checkError)
         }
         if (projectResponse !== null) {
             setProject(projectResponse)
         }
-        setLoading(false);
+        setLoading(false)
     }
 
     useEffect(() => {
