@@ -1,17 +1,18 @@
-import { checkProject, insertProject } from "../../api/project";
-import { storageSave } from "../../utils/storage";
 import { useState, useEffect } from "react";
 
-function TopProjects() {
-  const [projects, setProjects] = useState([]);
+const baseUrl = "https://633fd672d1fcddf69caaa419.mockapi.io/api/v1";
 
+function TopProjects() {
+  const [projects, setProject] = useState([]);
+
+  //Should be changed so that the fetch is moved to the api file: project.js - like the other ones
   useEffect(() => {
-    fetch("https://633fd672d1fcddf69caaa419.mockapi.io/api/v1/project")
+    fetch(baseUrl + "/project")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setProjects(data);
-      })      
+        setProject(data);
+      })
       .catch((err) => {
         console.log(err.message);
       });
@@ -19,8 +20,7 @@ function TopProjects() {
 
   return (
     <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-      { 
-        projects.slice(0,3).map(function (project) {        
+      {projects.slice(0, 3).map(function (project) {
         return (
           <div className="rounded overflow-hidden shadow-lg bg-white">
             <div className="rounded overflow-hidden shadow-lg bg-white">

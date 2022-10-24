@@ -1,6 +1,21 @@
 import { createHeaders } from "./index";
 const apiUrl = "https://633fd672d1fcddf69caaa419.mockapi.io/api/v1";
 
+export async function getAllProjects(){
+  try {    
+    console.log("In project.js.... trying to fetch project");
+    const response = await fetch(`${apiUrl}/project`);
+    if (!response.ok) {
+      throw new Error("Could not complete request.");
+    }
+    const data = await response.json();
+    return [null, data];
+  } catch (error) {
+    return [error.message, []];
+  }
+}
+
+
 export async function checkProject(name) {
   try {    
     console.log(name);
@@ -43,8 +58,7 @@ export async function createProject(name) {
   }
 }
 
-export async function insertProject() {
-  const name = "Baum";
+export async function insertProject(name) {
 
   const [checkError, project] = await checkProject(name);
   
@@ -54,7 +68,7 @@ export async function insertProject() {
   }
   
   if (project.length > 0) {
-    //Found the user. Returns the last item in the array...
+    //Found the project. Returns the last item in the array...
     return [null, project.pop()];
   }
 

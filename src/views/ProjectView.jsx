@@ -5,13 +5,13 @@ import { useEffect, useState } from "react"
 import { checkForProject } from "../api/project"
 import styles from "../mystyle.module.css"
 
-const ProjectView = () => {
+function ProjectView() {
 
     const [loading, setLoading] = useState(false)
     const [apiError, setApiError] = useState(null)
     const [project, setProject] = useState(null)
     const getProject = async (id) => {
-        setLoading(true);
+        setLoading(true)
         const [checkError, projectResponse] = await checkForProject(id)
         if (checkError !== null) {
             setApiError(checkError)
@@ -19,7 +19,7 @@ const ProjectView = () => {
         if (projectResponse !== null) {
             setProject(projectResponse)
         }
-        setLoading(false);
+        setLoading(false)
     }
 
     useEffect(() => {
