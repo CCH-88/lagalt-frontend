@@ -2,7 +2,6 @@ import styles from '../../mystyle.module.css'
 import ImageCycle from './ImageCycle';
 
 const ProjectCard = ({ project }) => {
-
     // const imageList = project.images.map(
     //     (image, index) => <ImageCycle key={index} image={image} />
     // )

@@ -1,25 +1,9 @@
 import { createHeaders } from "./index";
 const apiUrl = "https://633fd672d1fcddf69caaa419.mockapi.io/api/v1";
 
-export async function getAllProjects(){
-  try {    
-    console.log("In project.js.... trying to fetch project");
-    const response = await fetch(`${apiUrl}/project`);
-    if (!response.ok) {
-      throw new Error("Could not complete request.");
-    }
-    const data = await response.json();
-    return [null, data];
-  } catch (error) {
-    return [error.message, []];
-  }
-}
-
-
 export async function checkProject(name) {
   try {    
-    console.log(name);
-    const response = await fetch(`${apiUrl}/project/?name=${name}`);
+    const response = await fetch(`${apiUrl}/project/${id}`);
     if (!response.ok) {
       throw new Error("Could not complete request.");
     }

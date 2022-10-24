@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import ProfileCard from "../components/Profile/ProfileCard";
 import ProfilePortfolio from "../components/Profile/ProfilePortfolio";
 import { useUser } from "../context/UserContext";
-import withAuth from "../hoc/withAuth";
 import { checkForUser } from "../api/user";
 import { useParams } from "react-router-dom";
 import Spinner from "../components/utils/Spinner";
@@ -20,7 +19,6 @@ const ProfileView = () => {
   };
 
   useEffect(() => {
-    console.log(props);
     getProfile(userId);
   }, [url]);
 
@@ -59,7 +57,7 @@ const ProfileView = () => {
       {user !== null && friends !== null && (
         <div className="w-full h-full inline-block">
           <ProfileCard user={user} friends={friends} />
-          <ProfilePortfolio user={user} friends={friends} />
+          <ProfilePortfolio user={user} />
         </div>
       )}
       <div className="w-full h-full inline-block">
@@ -70,4 +68,4 @@ const ProfileView = () => {
   );
 };
 
-export default withAuth(ProfileView);
+export default ProfileView;

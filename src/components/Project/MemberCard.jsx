@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styles from "../../mystyle.module.css"
 
 const MemberCard = ({ member }) => {
@@ -6,8 +7,8 @@ const MemberCard = ({ member }) => {
 
     return (
         <ul className={styles.memberCard}>
-            {member.name}
-            <button className={styles.memberCardButton}>Go to profile</button>
+            <p className="inline-block">{member.name}</p>
+            <Link to={`/profile/${member.id}`} key={member.name} className={styles.memberCardButton}>Go to profile</Link>
         </ul>
 
     )

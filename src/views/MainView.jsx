@@ -1,7 +1,6 @@
-import ProjectList from "../components/MainView/ProjectList"
-import SortFilteringMenu from "../components/MainView/SortFilteringMenu"
-import TopProjects from "../components/MainView/TopProjects"
-
+import ProjectList from '../components/MainView/ProjectList'
+import SortFilteringMenu from '../components/MainView/SortFilteringMenu'
+import TopProjects from '../components/MainView/TopProjects'
 
 const MainView = () => {
     

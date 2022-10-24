@@ -33,7 +33,7 @@
 
 .profileCard {
     float: right;
-    height: 80vh;
+    height: fit-content;
     width: 30%;
     display: block;
     margin: 1%;
@@ -108,11 +108,12 @@ ul.membersList {
     height: 25px;
     width: 95px;
     background-color: rgb(243 244 246);
+    text-align: center;
 }
 
 .profilePortfolio{
     float: left;
-    height: 80vh;
+    height: fit-content;
     width: 60%;
     display: block;
     margin: 1%;
