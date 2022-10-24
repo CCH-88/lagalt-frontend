@@ -31,7 +31,8 @@ function ProjectList() {
       default:
         break;*/
     if (filterTextValue === "music") {
-      return console.log("inside music...");
+      
+      return console.log("inside music...");  
       //return project.field === 'music'
     } else if (filterTextValue === "film") {
       return console.log("inside film...");
