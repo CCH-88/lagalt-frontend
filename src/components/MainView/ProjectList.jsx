@@ -8,6 +8,18 @@ function ProjectList() {
   const [projects, setProject] = useState([]);
   let [filterTextValue, updateFilterText] = useState("all");
 
+    //Should be changed so that the fetch is moved to the api file: project.js - like the other ones
+    useEffect(() => {
+      fetch(baseUrl + "/project")
+        .then((response) => response.json())
+        .then((data) => {
+          setProject(data);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }, []);
+
   //The filter function is going to loop over each element in the projects array.
   //... and for each element in the array it is going to pass the current element to the callback-function
 
@@ -48,17 +60,7 @@ function ProjectList() {
       //return project.field === 'all'
     }});
 
-  //Should be changed so that the fetch is moved to the api file: project.js - like the other ones
-  useEffect(() => {
-    fetch(baseUrl + "/project")
-      .then((response) => response.json())
-      .then((data) => {
-        setProject(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
+
 
   function onFilterValueSelected(filterValue) {
     //The updatefiltertext function will update the filterValue parameter
