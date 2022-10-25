@@ -8,7 +8,7 @@ const ProfilePortfolio = ({ user }) => {
       {user.projectFreelancers && (
         <ul className="">
           {user.projectFreelancers.map((project) => (
-              <ProfileProjectCard project={project} key={project}>
+              <ProfileProjectCard project={project} key={project.id.project_id}>
             </ProfileProjectCard>
           ))}
         </ul>
