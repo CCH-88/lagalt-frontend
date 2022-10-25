@@ -1,13 +1,25 @@
-import { createHeaders } from "./index";
-const apiUrl = "https://633fd672d1fcddf69caaa419.mockapi.io/api/v1";
+const apiUrl = "http://localhost:8080/api/v1";
 
-export async function checkProject(id) {
+export async function checkProject(id, token) {
+  const myHeaders = new Headers()
+  console.log(token);
+  myHeaders.append('token', token);
+  myHeaders.append('Content-Type', 'application/json');
+  myHeaders.append('Accept', 'application/json');
+  myHeaders.append('Origin','http://localhost:8080');
+
+
   try {    
-    const response = await fetch(`${apiUrl}/project/${id}`);
+    const response = await fetch(`${apiUrl}/projects/${id}`, {
+      credentials: 'include',
+      headers: myHeaders,
+      mode: 'no-cors'
+    });
     if (!response.ok) {
       throw new Error("Could not complete request.");
     }
     const data = await response.json();
+    console.log(data);
     return [null, data];
   } catch (error) {
     return [error.message, []];

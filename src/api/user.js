@@ -1,9 +1,9 @@
 import {createHeaders} from './index'
-const apiUrl = "https://633fd672d1fcddf69caaa419.mockapi.io/api/v1"
+const apiUrl = "http://localhost:8080/api/v1"
 
 export const checkForUser = async (id) => {
     try {
-        const response = await fetch(`${apiUrl}/user/${id}`)
+        const response = await fetch(`${apiUrl}/freelancers/profile/${id}`)
         if(!response.ok) {
             throw new Error('Could not complete request.')
         }

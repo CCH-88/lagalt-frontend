@@ -8,8 +8,13 @@ import ProjectView from './views/ProjectView'
 import CreateProjectView from './views/CreateProjectView'
 
 import NewProfile from './views/NewProfile'
+import Keycloak from 'keycloak-js'
+import { keycloak } from './auth/keycloak'
+import { useKeycloak } from '@react-keycloak/web'
+import { useEffect } from 'react'
 
 function App() {
+
 	return (
 		<BrowserRouter>
 			<Navbar />

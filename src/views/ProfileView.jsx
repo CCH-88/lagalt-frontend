@@ -12,6 +12,7 @@ const ProfileView = () => {
   const [apiError, setApiError] = useState(null);
   const [friends, setFriends] = useState([]);
   let { userId } = useParams();
+
   const url = window.location.pathname.split("/").pop();
   let props = {
     user: user,

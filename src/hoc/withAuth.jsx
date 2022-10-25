@@ -1,17 +1,16 @@
 import { Navigate } from 'react-router-dom'
-import { STORAGE_KEY_TOKEN } from '../const/storageKeys'
 import { useUser } from '../context/UserContext'
 import { useKeycloak } from '@react-keycloak/web'
-import { useEffect } from 'react'
 
 const withAuth = (Component) => (props) => {
 	const { user } = useUser()
-
-		const { initialized, keycloak } = useKeycloak()
+	const { initialized, keycloak } = useKeycloak()
 
 	if (keycloak.authenticated && initialized) {
+		console.log("succes");
 		return <Component {...props} />
 	} else {
+		console.log("exiting");
 		return <Navigate to="/" />
 	}
 

@@ -6,6 +6,7 @@ import { checkProject } from "../api/project"
 import styles from "../mystyle.module.css"
 import { useParams } from "react-router-dom"
 import Spinner from "../components/utils/Spinner"
+import { useKeycloak } from "@react-keycloak/web"
 
 const ProjectView = () => {
 
@@ -13,22 +14,28 @@ const ProjectView = () => {
     const [apiError, setApiError] = useState(null)
     const [project, setProject] = useState(null)
     let { projectId } = useParams();
+    const { keycloak } = useKeycloak()
+
 
     const getProject = async (id) => {
         setLoading(true);
-        const [checkError, projectResponse] = await checkProject(id)
+        const [checkError, projectResponse] = await checkProject(id, keycloak.token)
         if (checkError !== null) {
             setApiError(checkError)
+            console.log(checkError);
         }
         if (projectResponse !== null) {
             setProject(projectResponse)
+            console.log(projectResponse);
         }
         setLoading(false);
     }
 
     useEffect(() => {
-        getProject(projectId)
-    }, [])
+        if(keycloak.authenticated){
+            getProject(projectId)
+        }
+    }, [keycloak.authenticated])
 
     return (
         <>
@@ -47,4 +54,4 @@ const ProjectView = () => {
     )
 }
 
-export default withAuth(ProjectView)
+export default ProjectView
