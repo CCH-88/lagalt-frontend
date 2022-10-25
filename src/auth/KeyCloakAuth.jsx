@@ -1,8 +1,6 @@
 import { useKeycloak } from '@react-keycloak/web'
-import { useNavigate } from 'react-router-dom'
-import { useUser } from '../context/UserContext'
-
 export const AuthButton = () => {
+	
 	const { keycloak } = useKeycloak()
 
 	return (
