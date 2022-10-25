@@ -9,10 +9,18 @@ export const AuthButton = () => {
 		<>
 			{!keycloak.authenticated && (
 				<div className="flex justify-center items-center content-center gap-x-2">
-					<button type="button" title="Login" className="base-btn border-primary-blue text-primary-blue  hover:text-primary-blue/70 hover:border-primary-blue/70 " onClick={() => keycloak.login()}>
+					<button
+						type="button"
+						title="Login"
+						className="base-btn border-primary-blue text-primary-blue  hover:text-primary-blue/70 hover:border-primary-blue/70 "
+						onClick={() => keycloak.login({ redirectUri: `${import.meta.env.VITE_keycloak_frontend_url}${location.pathname}` })}>
 						Login
 					</button>
-					<button type="button" title="Signup" className="base-btn bg-primary-blue text-white hover:bg-primary-blue/70" onClick={() => keycloak.register()}>
+					<button
+						type="button"
+						title="Signup"
+						className="base-btn bg-primary-blue text-white hover:bg-primary-blue/70"
+						onClick={() => keycloak.register({ redirectUri: `${import.meta.env.VITE_keycloak_frontend_url}/profile` })}>
 						Signup
 					</button>
 				</div>
