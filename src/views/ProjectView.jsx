@@ -14,9 +14,9 @@ function ProjectView() {
     const [project, setProject] = useState(null)
     let { projectId } = useParams();
 
-    const getProject = async (id) => {
+    const getProject = async (projectId) => {
         setLoading(true)
-        const [checkError, projectResponse] = await checkForProject(id)
+        const [checkError, projectResponse] = await checkProject(projectId)
         if (checkError !== null) {
             setApiError(checkError)
         }
@@ -34,9 +34,9 @@ function ProjectView() {
         <>
             {(project !== null) &&
                 <>
-                    <h2 className={styles.projectView}>{project.name} - {project.owner} - Date posted</h2>
-                    <ProjectCard project={project} />
-                    <MembersList members={project.members} />
+                    <h2 className={styles.projectView}>{project.name} - {project.field} - {project.progress}</h2>
+                    <ProjectCard project={project} key={project.id}/>
+                    <MembersList members={project.projectFreelancers} />
                 </>}
             <div className="w-full h-full inline-block">
                 {loading && <Spinner />}
@@ -47,4 +47,4 @@ function ProjectView() {
     )
 }
 
-export default withAuth(ProjectView)
+export default ProjectView

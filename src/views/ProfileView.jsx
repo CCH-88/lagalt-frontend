@@ -32,7 +32,7 @@ const ProfileView = () => {
     if (userResponse !== null) {
       setUser(userResponse);
       props.user = userResponse;
-      getFriends(userResponse.friends);
+      //getFriends(userResponse.friends);
     }
     setLoading(false);
   };
