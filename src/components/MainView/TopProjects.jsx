@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
 
-const baseUrl = "https://633fd672d1fcddf69caaa419.mockapi.io/api/v1";
+//const baseUrl = "http://localhost:8080/api/v1";
 
 function TopProjects() {
   const [projects, setProject] = useState([]);
 
   //Should be changed so that the fetch is moved to the api file: project.js - like the other ones
   useEffect(() => {
-    fetch(baseUrl + "/project")
-      .then((response) => response.json())
-      .then((data) => {
+    fetch(
+      "http://localhost:8080/api/v1/projects", {
+      mode: `no-cors`})
+      .then(function (response) {
+        console.log("This is the repsonse: " +  JSON.stringify(response));
+        return response.json();
+      })
+      .then(function (data) {
         console.log(data);
         setProject(data);
       })
