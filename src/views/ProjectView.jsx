@@ -6,6 +6,8 @@ import { checkProject } from "../api/project"
 import styles from "../mystyle.module.css"
 import { useParams } from "react-router-dom"
 import Spinner from "../components/utils/Spinner"
+import MessageBoard from "../components/Project/MessageBoard"
+import PostMessage from "../components/Project/PostMessage"
 
 function ProjectView() {
 
@@ -35,8 +37,10 @@ function ProjectView() {
             {(project !== null) &&
                 <>
                     <h2 className={styles.projectView}>{project.name} - {project.field} - {project.progress}</h2>
-                    <ProjectCard project={project} key={project.id}/>
+                    <ProjectCard project={project} />
                     <MembersList members={project.projectFreelancers} />
+                    <MessageBoard chat={project.chat} />
+                    <PostMessage chat={project.chat} />
                 </>}
             <div className="w-full h-full inline-block">
                 {loading && <Spinner />}
