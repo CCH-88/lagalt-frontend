@@ -15,8 +15,8 @@ function App() {
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<MainView />} />
-				<Route path="/profile" element={<NewProfile />}>
-					<Route path=":userId" element={<ProfileView />} children={[<Route path="editprofile" element={<EditProfileView />} />]} />
+				<Route path="/profile" element={<ProfileView />}>
+					<Route path=":userId" element={<ProfileView />} children={[<Route key={"editprofile"} path="editprofile" element={<EditProfileView />} />] } />
 				</Route>
 				<Route path="/project">
 					<Route path=":projectId" element={<ProjectView />} />

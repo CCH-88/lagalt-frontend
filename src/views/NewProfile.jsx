@@ -20,4 +20,4 @@ const NewProfile = () => {
 	)
 }
 
-export default withAuth(NewProfile)
+export default NewProfile

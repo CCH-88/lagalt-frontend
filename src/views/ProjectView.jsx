@@ -6,6 +6,8 @@ import { checkProject } from "../api/project"
 import styles from "../mystyle.module.css"
 import { useParams } from "react-router-dom"
 import Spinner from "../components/utils/Spinner"
+import MessageBoard from "../components/Project/MessageBoard"
+import PostMessage from "../components/Project/PostMessage"
 
 function ProjectView() {
 
@@ -14,9 +16,9 @@ function ProjectView() {
     const [project, setProject] = useState(null)
     let { projectId } = useParams();
 
-    const getProject = async (id) => {
+    const getProject = async (projectId) => {
         setLoading(true)
-        const [checkError, projectResponse] = await checkForProject(id)
+        const [checkError, projectResponse] = await checkProject(projectId)
         if (checkError !== null) {
             setApiError(checkError)
         }
@@ -34,9 +36,11 @@ function ProjectView() {
         <>
             {(project !== null) &&
                 <>
-                    <h2 className={styles.projectView}>{project.name} - {project.owner} - Date posted</h2>
+                    <h2 className={styles.projectView}>{project.name} - {project.field} - {project.progress}</h2>
                     <ProjectCard project={project} />
-                    <MembersList members={project.members} />
+                    <MembersList members={project.projectFreelancers} />
+                    <MessageBoard chat={project.chat} />
+                    <PostMessage chat={project.chat} />
                 </>}
             <div className="w-full h-full inline-block">
                 {loading && <Spinner />}
@@ -47,4 +51,4 @@ function ProjectView() {
     )
 }
 
-export default withAuth(ProjectView)
+export default ProjectView

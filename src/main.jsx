@@ -7,6 +7,7 @@ import './index.css'
 import { ReactKeycloakProvider } from '@react-keycloak/web'
 import { keycloak, initOptions } from './auth/keycloak'
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<ReactKeycloakProvider authClient={keycloak} initOptions={initOptions}>
 		<AppContext>
