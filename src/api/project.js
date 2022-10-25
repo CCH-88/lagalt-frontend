@@ -1,9 +1,24 @@
 import { createHeaders } from "./index";
-const apiUrl = "https://633fd672d1fcddf69caaa419.mockapi.io/api/v1";
+const apiUrl = "https://lagalt.onrender.com/api/v1";
 
-export async function checkProject(name) {
+export async function checkProject(projectId) {
   try {    
-    const response = await fetch(`${apiUrl}/project/${id}`);
+    console.log("starting fetch");
+    const response = await fetch(`${apiUrl}/projects/${projectId}`);
+    if (!response.ok) {
+      throw new Error("Could not complete request.");
+    }
+    const data = await response.json();
+    return [null, data];
+  } catch (error) {
+    return [error.message, []];
+  }
+}
+
+export async function checkAllProjects() {
+  try {    
+    console.log("starting fetch");
+    const response = await fetch(`${apiUrl}/projects/`);
     if (!response.ok) {
       throw new Error("Could not complete request.");
     }
