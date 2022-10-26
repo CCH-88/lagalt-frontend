@@ -1,7 +1,7 @@
 //GET request to fetch a project with specific id
 export async function checkProject(projectId) {
   try {    
-    const response = await fetch(import.meta.env.VITE_BACKEND_URL + `api/v1/projects/${projectId}`);
+    const response = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/projects/${projectId}`);
     if (!response.ok) {
       throw new Error("Could not complete request.");
     }
@@ -15,7 +15,7 @@ export async function checkProject(projectId) {
 //GET request to fetch all projects in database
 export async function checkAllProjects() {
   try {    
-    const response = await fetch(import.meta.env.VITE_BACKEND_URL + `api/v1/projects/`);
+    const response = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/projects/`);
     if (!response.ok) {
       throw new Error("Could not complete request.");
     }
