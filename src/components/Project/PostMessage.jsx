@@ -5,6 +5,7 @@ import { useUser } from "../../context/UserContext";
 import { chatAdd } from "../../api/messageboard";
 import { useKeycloak } from "@react-keycloak/web";
 
+//displays a text area and lets the user type a message and post it to the backend
 const PostMessage = ({chat}) => {
   const { user, setUser } = useUser();
   const { keycloak } = useKeycloak()
@@ -19,11 +20,9 @@ const PostMessage = ({chat}) => {
   const onSubmitChatMessage = async(input) => {
     input.preventDefault();
     if (input.target.message.value.length < 1) {
-      console.log("message too short");
     } else {
       let message = "Tobias Møller" + ": " + input.target.message.value
       await chatAdd(chat.id, message, 1, keycloak.token)
-      console.log(message + " " + chat.id);
     }
     input.target.reset();
   };

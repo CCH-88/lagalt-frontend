@@ -1,5 +1,6 @@
 import styles from "../../mystyle.module.css";
 
+//takes the chat object of a project and displays the messages 
 const MessageBoard = ({chat}) => {
   return (
     <div className={styles.projectCard}>

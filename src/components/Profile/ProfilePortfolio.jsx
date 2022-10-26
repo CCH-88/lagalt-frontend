@@ -1,6 +1,7 @@
 import styles from "../../mystyle.module.css";
 import ProfileProjectCard from "./ProfileProjectCard";
 
+//component which shows which project the user is a part of
 const ProfilePortfolio = ({ user }) => {
   return (
     <div className={styles.profilePortfolio}>
