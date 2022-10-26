@@ -1,7 +1,6 @@
 //POST request to add a message to the chat of a project.
 export const chatAdd = async (chatId, message, freelancerId, token) => {
     try {
-        console.log("trying to add chat");
         const freelancer = { id: freelancerId }
         const chat = { id: chatId }
         const text = message
