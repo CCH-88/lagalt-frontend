@@ -14,7 +14,7 @@ const CreateProjectView = () => {
 
     const onSubmit = async (input) => {
         let {projectname, projectdescription, projectfield, projectstatus} = input
-        await projectAdd(projectname, projectdescription, projectfield, projectstatus, keycloak.token)
+        await projectAdd(projectname, projectdescription, projectfield, projectstatus, keycloak)
     }
 
     const errorMessageProjectName = (() => {
@@ -137,8 +137,8 @@ const CreateProjectView = () => {
                                 <option value={""} disabled>
                                     Choose an option
                                 </option>
-                                <option value="notstarted">Not started</option>
-                                <option value="inprogress">In progress</option>
+                                <option value="not_started">Not started</option>
+                                <option value="in_progress">In progress</option>
                                 <option value="halted">Halted</option>
                                 <option value="finished">Finished</option>
                                 <option value="founding">Founding</option>
