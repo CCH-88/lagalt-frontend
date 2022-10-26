@@ -4,7 +4,7 @@ import styles from "../../mystyle.module.css";
 const ProfileCard = ({ user, friends }) => {
   return (
     <div className={styles.profileCard}>
-      <p className="text-2xl text-slate-600 m-5">{user.name}</p>
+      <p className="text-2xl text-slate-600 m-5">{user.username}</p>
       <p className="text-xl text-slate-600 m-5">{user.email}</p>
 
       {user.skills && (
