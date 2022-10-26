@@ -1,9 +1,19 @@
 import { useKeycloak } from '@react-keycloak/web'
-import { useNavigate } from 'react-router-dom'
-import { useUser } from '../context/UserContext'
 
+/* <Suspense fallback={<h2>Loading...</h2>}>
+				<Navbar />
+			</Suspense> */
+
+/* function delayForDemo(promise) {
+	return new Promise((resolve) => {
+		setTimeout(resolve, 2000)
+	}).then(() => promise)
+}
+
+const Navbar = lazy(() => delayForDemo(import('./NavBar/Navbar')))
+ */
 export const AuthButton = () => {
-	const { keycloak } = useKeycloak()
+	const { keycloak, initialized } = useKeycloak()
 
 	return (
 		<>
@@ -26,7 +36,7 @@ export const AuthButton = () => {
 				</div>
 			)}
 
-			{!!keycloak.authenticated && (
+			{keycloak.authenticated && (
 				<button type="button" className="text-blue-800" onClick={() => keycloak.logout()}>
 					Logout ({keycloak.tokenParsed.preferred_username})
 				</button>
