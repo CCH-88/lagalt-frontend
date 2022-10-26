@@ -1,5 +1,4 @@
 import ProjectCard from "../components/Project/ProjectCard"
-import withAuth from "../hoc/withAuth"
 import MembersList from "../components/Project/MembersList"
 import { useEffect, useState } from "react"
 import { checkProject } from "../api/project"
@@ -10,6 +9,7 @@ import MessageBoard from "../components/Project/MessageBoard"
 import PostMessage from "../components/Project/PostMessage"
 import { checkForUser } from "../api/user"
 
+//view which shows a specific project 
 function ProjectView() {
 
     const [loading, setLoading] = useState(false)
@@ -18,6 +18,7 @@ function ProjectView() {
     const [members, setMembers] = useState([])
     let { projectId } = useParams();
 
+    //fetches the project 
     const getProject = async (projectId) => {
         setLoading(true)
         const [checkError, projectResponse] = await checkProject(projectId)
@@ -30,6 +31,8 @@ function ProjectView() {
         }
         setLoading(false)
     }
+
+    //fetches the members of a project
     const getMembers = async (collection) => {
         setLoading(true)
         setMembers([])

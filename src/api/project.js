@@ -1,10 +1,7 @@
-import { createHeaders } from "./index";
-const apiUrl = "https://lagalt.onrender.com/api/v1";
-
+//GET request to fetch a project with specific id
 export async function checkProject(projectId) {
   try {    
-    console.log("starting fetch");
-    const response = await fetch(`${apiUrl}/projects/${projectId}`);
+    const response = await fetch(import.meta.env.VITE_BACKEND_URL + `api/v1/projects/${projectId}`);
     if (!response.ok) {
       throw new Error("Could not complete request.");
     }
@@ -15,10 +12,10 @@ export async function checkProject(projectId) {
   }
 }
 
+//GET request to fetch all projects in database
 export async function checkAllProjects() {
   try {    
-    console.log("starting fetch");
-    const response = await fetch(`${apiUrl}/projects/`);
+    const response = await fetch(import.meta.env.VITE_BACKEND_URL + `api/v1/projects/`);
     if (!response.ok) {
       throw new Error("Could not complete request.");
     }
@@ -29,9 +26,9 @@ export async function checkAllProjects() {
   }
 }
 
+//POST request to create a new project
 export async function createProject(name) {
   try {
-    console.log(name);
     const response = await fetch(apiUrl, {
         method: 'POST',
         //headers: createHeaders(), "Use this, createHeaders-funtion, when an API-key is needed.... 

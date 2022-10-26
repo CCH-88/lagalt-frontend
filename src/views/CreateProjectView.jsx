@@ -2,6 +2,7 @@ import { useKeycloak } from '@react-keycloak/web';
 import { useForm } from 'react-hook-form'
 import { projectAdd } from "../api/postproject";
 
+//this view allows the user to create a new project 
 const CreateProjectView = () => {
     const inputConfig = {
         required: true,

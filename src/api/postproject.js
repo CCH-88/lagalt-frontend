@@ -1,8 +1,6 @@
-const apiUrl = "https://lagalt.onrender.com/api/v1";
-
+//Post request to create a new project 
 export const projectAdd = async (name, ownerId, description, field, progress, token) => {
     try {
-        console.log("trying to add project");
         const response = await fetch(import.meta.env.VITE_BACKEND_URL + '/api/v1/projects', {
             method: 'POST',
             headers: {

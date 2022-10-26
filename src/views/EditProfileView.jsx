@@ -4,11 +4,13 @@ import Toggle from "../components/utils/Toggle/Toggle";
 import { useUser } from "../context/UserContext";
 import withAuth from "../hoc/withAuth";
 
+//view which allows the user to edit information in their profile
+//TODO implement patch request for each type of information
 const EditProfileView = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [accSettings, setAccSettings] = useState(true);
     const [skills, setSkills] = useState(false);
-    const { user, setUser } = useUser();
+    const { user } = useUser();
 
 
     const acountSettingsClicked = () => {
@@ -139,4 +141,4 @@ const EditProfileView = () => {
     )
 }
 
-export default withAuth(EditProfileView)
+export default EditProfileView
