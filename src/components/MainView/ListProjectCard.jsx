@@ -9,14 +9,14 @@ function ListProjectCard({ project }) {
       >
         <img
           className="w-full h-full"
-          src={project.images}
+          src={"https://loremflickr.com/640/480/cat"} //Hardcoded temporarily for presentation. Insert the following when db allows for links... project.projectImages[0]
           alt="project image"
         ></img>
       </div>
-      <div className=" bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+      <div className=" bg-white max-w-sm w-full lg:max-w-full rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
         <div className="mb-8">
           <div className="text-gray-900 font-bold text-xl mb-2">
-            {project.title}
+            {project.name}
           </div>
           <p className="text-gray-700 text-base">{project.description}</p>
         </div>
