@@ -6,6 +6,7 @@ import EditProfileView from './views/EditProfileView'
 import ProjectView from './views/ProjectView'
 import CreateProjectView from './views/CreateProjectView'
 import { useKeycloak } from '@react-keycloak/web'
+import NewProfile from './views/NewProfile'
 
 export function OurRoutes({ loading }) {
 	const { keycloak, initialized } = useKeycloak()
@@ -22,7 +23,7 @@ export function OurRoutes({ loading }) {
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<MainView />} />
-				<Route path="/profile" element={<ProfileView />}>
+				<Route path="/profile" element={<NewProfile />}>
 					<Route path=":userId" element={<ProfileView />} children={[<Route key={'editprofile'} path="editprofile" element={<EditProfileView />} />]} />
 				</Route>
 				<Route path="/project">
