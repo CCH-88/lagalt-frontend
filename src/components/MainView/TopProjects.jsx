@@ -18,7 +18,7 @@ function TopProjects({ projectsList }) {
             <div className="max-w-sm w-full lg:max-w-full rounded overflow-hidden bg-white">
               <img
                 className="w-full"
-                src={"https://loremflickr.com/640/480/dog"} //Hardcoded temporarily for presentation. Insert the following when db allows for links... project.projectImages[0]
+                src={"https://loremflickr.com/640/480/dog"} //Added some hardcoded temporarily for presentation. Insert the following when db allows for links... project.projectImages[0]
                 alt="Picture could not load"
               ></img>
             </div>
