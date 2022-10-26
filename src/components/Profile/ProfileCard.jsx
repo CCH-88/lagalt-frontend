@@ -21,7 +21,6 @@ const ProfileCard = ({ user, friends }) => {
       )}
       <p className="text-2xl text-slate-600 m-5">Description</p>
       <p className="text-l text-slate-600 m-5">{user.description}</p>
-      <p className="text-xl text-slate-600 m-5">Friends</p>
 
       {friends.length > 0 && (
         <ul className="flex mx-2 my-2">

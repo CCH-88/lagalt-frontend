@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function ListProjectCard({ project }) {
   return (
     <div className="max-w-sm w-full lg:max-w-full lg:flex rounded overflow-hidden shadow-lg p-2">
@@ -8,7 +10,7 @@ function ListProjectCard({ project }) {
         <img
           className="w-full h-full"
           src={project.images}
-          alt="Mountain"
+          alt="project image"
         ></img>
       </div>
       <div className=" bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
@@ -20,14 +22,11 @@ function ListProjectCard({ project }) {
         </div>
         <div className="flex items-center">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #photography
+            {project.field}
           </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #travel
-          </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #winter
-          </span>
+          <Link className="inline-block bg-blue-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" to={`/project/${project.id}`} key={project.id}>
+              <p>Go to project</p>
+            </Link>
         </div>
       </div>
     </div>
