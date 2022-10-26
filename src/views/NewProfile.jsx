@@ -10,8 +10,9 @@ const NewProfile = () => {
 
 	async function createUser() {
 		setLoading(true)
+		
 		try {
-			fetch(import.meta.env.VITE_BACKEND_URL + '/api/v1/freelancers', {
+			const response = await fetch(import.meta.env.VITE_BACKEND_URL + '/api/v1/freelancers', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -21,18 +22,23 @@ const NewProfile = () => {
 					username: keycloak.tokenParsed.preferred_username,
 					email: keycloak.tokenParsed.email,
 				}),
-			}).then(navigate(`/profile/${keycloak.subject}`))
-			setLoading(false)	
+			})
+			if (response.status == 200) {
+				console.log('success')
+				navigate(`/profile/${keycloak.subject}`)
+			}
+			if (response.status == 409) {
+				navigate(`/profile/${keycloak.subject}`)
+			}
+			setLoading(false)
 		} catch (error) {
 			console.error(error)
 		}
-		
 	}
 	return (
-		<div className='w-full flex flex-col justify-center'>
-
+		<div className="w-full flex flex-col justify-center">
 			<h2 className="text-center mt-10 text-2xl ">To fully use our platfor you need to Create your User in our Backend</h2>
-			<ul id='errors'></ul>
+			<ul id="errors"></ul>
 			<button type="button" onClick={createUser} disabled={!initialized && keycloak.authenticated | loading} className="base-btn mt-10 mx-auto text-white bg-primary-blue">
 				Create Backend User from Auth user.
 			</button>
