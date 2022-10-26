@@ -1,14 +1,15 @@
 //Post request to create a new project 
-export const projectAdd = async (name, description, field, progress, token) => {
+export const projectAdd = async (name, description, field, progress, keycloak) => {
     try {
         const response = await fetch(import.meta.env.VITE_BACKEND_URL + '/api/v1/projects', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' + keycloak.token
             },
             body: JSON.stringify({
                 name,
+                ownerId: keycloak.subject,
                 description,
                 field,
                 progress
