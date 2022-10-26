@@ -16,7 +16,14 @@ function ProjectView() {
     const [apiError, setApiError] = useState(null)
     const [project, setProject] = useState(null)
     const [members, setMembers] = useState([])
+    const [value, setValue] = useState(0);
+
     let { projectId } = useParams();
+
+    function useForceUpdate() {
+        return () => setValue(value => value + 1);
+    }
+    const forceUpdate = useForceUpdate();
 
     //fetches the project 
     const getProject = async (projectId) => {
@@ -39,18 +46,25 @@ function ProjectView() {
         for (const member of collection) {
             const [checkError, userResponse] = await checkForUser(member.id.freelancer_id);
             if (checkError !== null) {
-              setApiError(checkError);
+                setApiError(checkError);
             }
             if (userResponse !== null) {
-              setMembers((friends) => [...friends, userResponse]);
+                setMembers((friends) => [...friends, userResponse]);
             }
-          }
-          setLoading(false);
+        }
+        setLoading(false);
+    }
+
+    const sortMessages = (chat) => {
+        chat.sort(function (a, b) {
+            return new Date(a.dateTime) - new Date(b.dateTime)
+        })
+        return chat
     }
 
     useEffect(() => {
         getProject(projectId)
-    }, [])
+    }, [value])
 
     return (
         <>
@@ -59,9 +73,16 @@ function ProjectView() {
                     <h2 className={styles.projectView}>{project.name} - {project.field} - {project.progress}</h2>
                     <ProjectCard project={project} />
                     <MembersList members={members} />
-                    <MessageBoard chat={project.chat} />
+                    <div className="inline-block mx-4 my-4 -mb-1">
+                        <button className={styles.memberCardButton} onClick={forceUpdate}>
+                            Update chat
+                        </button>
+                    </div>
+                    <MessageBoard chat={sortMessages(project.chat.messages)} />
                     <PostMessage chat={project.chat} />
+
                 </>}
+
             <div className="w-full h-full inline-block">
                 {loading && <Spinner />}
                 {apiError && <p>{apiError}</p>}
