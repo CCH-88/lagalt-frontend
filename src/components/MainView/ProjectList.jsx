@@ -33,8 +33,7 @@ function ProjectList({ projectsList }) {
       <SortFilteringMenu
         filterValueSelected={onFilterValueSelected}
       ></SortFilteringMenu>
-
-      {/* starts by showing the first three in the project array*/}
+      
       {(tempProjects !== undefined) &&
         tempProjects.slice(0, 10).map(function (project) {
           return (

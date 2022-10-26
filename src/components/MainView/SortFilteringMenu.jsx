@@ -12,7 +12,7 @@ let  SortFilteringMenu = (props) => {
   }
 
   return (
-    <div className="bg-white p-3 m-10">
+    <div className="bg-white p-3 mb-5">
       <ul className="flex justify-between">
         <li className="mr-3">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-2">
