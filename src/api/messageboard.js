@@ -18,7 +18,7 @@ export const chatAdd = async (chatId, message, freelancerId, token) => {
             })
         })
         if (!response.ok) {
-            throw new Error('Could not update the translation')
+            throw new Error('Could not post the message')
         }
         const result = await response.json()
         return [null, result]
