@@ -1,6 +1,7 @@
 import styles from "../../mystyle.module.css"
 import MemberCard from "./MemberCard"
 
+//takes in the members of a project and displays them 
 const MembersList = ({ members }) => {
     if(members === undefined){
         return

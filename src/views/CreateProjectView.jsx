@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useKeycloak } from '@react-keycloak/web';
 import { useForm } from 'react-hook-form'
-import Toggle from "../components/utils/Toggle/Toggle";
-import { useUser } from "../context/UserContext";
+import { projectAdd } from "../api/postproject";
 
+//this view allows the user to create a new project 
 const CreateProjectView = () => {
     const inputConfig = {
         required: true,
         minLength: 3
     }
+    const { keycloak } = useKeycloak()
 
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     const onSubmit = async (input) => {
-        console.log(input);
+        let {projectname, projectdescription, projectfield, projectstatus} = input
+        await projectAdd(projectname, keycloak.idToken, projectdescription, projectfield, projectstatus, keycloak.token)
     }
 
     const errorMessageProjectName = (() => {

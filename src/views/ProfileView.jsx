@@ -32,22 +32,6 @@ const ProfileView = () => {
     if (userResponse !== null) {
       setUser(userResponse);
       props.user = userResponse;
-      //getFriends(userResponse.friends);
-    }
-    setLoading(false);
-  };
-
-  const getFriends = async (collection) => {
-    setLoading(true);
-    setFriends([]);
-    for (const id of collection) {
-      const [checkError, userResponse] = await checkForUser(id);
-      if (checkError !== null) {
-        setApiError(checkError);
-      }
-      if (userResponse !== null) {
-        setFriends((friends) => [...friends, userResponse]);
-      }
     }
     setLoading(false);
   };
@@ -56,7 +40,7 @@ const ProfileView = () => {
     <>
       {user !== null && friends !== null && (
         <div className="w-full h-full inline-block">
-          <ProfileCard user={user} friends={friends} />
+          <ProfileCard user={user} />
           <ProfilePortfolio user={user} />
         </div>
       )}

@@ -1,9 +1,7 @@
-import {createHeaders} from './index'
-const apiUrl = "https://lagalt.onrender.com/api/v1";
-
+//GET request to fetch a freelancer with specific id
 export const checkForUser = async (id) => {
     try {
-        const response = await fetch(`${apiUrl}/freelancers/profile/${id}`)
+        const response = await fetch(import.meta.env.VITE_BACKEND_URL + `api/v1/freelancers/profile/${id}`)
         if(!response.ok) {
             throw new Error('Could not complete request.')
         }
