@@ -14,7 +14,7 @@ const CreateProjectView = () => {
 
     const onSubmit = async (input) => {
         let {projectname, projectdescription, projectfield, projectstatus} = input
-        await projectAdd(projectname, keycloak.idToken, projectdescription, projectfield, projectstatus, keycloak.token)
+        await projectAdd(projectname, projectdescription, projectfield, projectstatus, keycloak.token)
     }
 
     const errorMessageProjectName = (() => {
