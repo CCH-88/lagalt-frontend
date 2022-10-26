@@ -1,20 +1,20 @@
-export const chatAdd = async (chatId, message, freelancerId, token) => {
+const apiUrl = "https://lagalt.onrender.com/api/v1";
+
+export const projectAdd = async (name, ownerId, description, field, progress, token) => {
     try {
-        console.log("trying to add chat");
-        const freelancer = { id: freelancerId }
-        const chat = { id: chatId }
-        const text = message
-        console.log(token);
-        const response = await fetch(import.meta.env.VITE_BACKEND_URL + '/api/v1/messages', {
+        console.log("trying to add project");
+        const response = await fetch(import.meta.env.VITE_BACKEND_URL + '/api/v1/projects', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify({
-                freelancer,
-                chat,
-                text
+                name,
+                ownerId,
+                description,
+                field,
+                progress
             })
         })
         if (!response.ok) {
