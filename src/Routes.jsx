@@ -24,7 +24,8 @@ export function OurRoutes({ loading }) {
 			<Routes>
 				<Route path="/" element={<MainView />} />
 				<Route path="/profile" element={<NewProfile />}></Route>
-				<Route path="/profile/:userId" element={<ProfileView />} children={[<Route key={'editprofile'} path="editprofile" element={<EditProfileView />} />]} />
+				<Route path="/profile/:userId" element={<ProfileView />}/>
+				<Route path="/profile/:userId/editprofile" element={<EditProfileView />} />
 				<Route path="/project">
 					<Route path=":projectId" element={<ProjectView />} />
 				</Route>
