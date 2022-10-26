@@ -9,23 +9,22 @@ import { useKeycloak } from '@react-keycloak/web'
 import NewProfile from './views/NewProfile'
 
 export function OurRoutes({ loading }) {
-	const { keycloak, initialized } = useKeycloak()
+	/* const { keycloak, initialized } = useKeycloak()
 
 	if (loading != true) {
 		console.log("ourRoutes: init: ", initialized)
 		console.log('ourRoutes: ', keycloak.subject)
 	} else {
 		console.log('else ourRoutes: ', keycloak.subject)
-	}
+	} */
 
 	return (
 		<BrowserRouter>
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<MainView />} />
-				<Route path="/profile" element={<NewProfile />}>
-					<Route path=":userId" element={<ProfileView />} children={[<Route key={'editprofile'} path="editprofile" element={<EditProfileView />} />]} />
-				</Route>
+				<Route path="/profile" element={<NewProfile />}></Route>
+				<Route path="/profile/:userId" element={<ProfileView />} children={[<Route key={'editprofile'} path="editprofile" element={<EditProfileView />} />]} />
 				<Route path="/project">
 					<Route path=":projectId" element={<ProjectView />} />
 				</Route>
