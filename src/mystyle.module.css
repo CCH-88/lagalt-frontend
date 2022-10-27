@@ -79,10 +79,10 @@ h1.projectCard {
 
 h2.membersList {
     font-family: Roboto, sans-serif;
-    font-size: 32px;
+    font-size: 16x;
     margin-left: 25px;
     margin-top: 3px;
-    margin-bottom: 7px;
+    margin-bottom: 4px;
 }
 
 ul.membersList {

@@ -76,18 +76,24 @@ function ProjectView() {
   const tryJoinProject = async () => {
     setLoading(true);
     console.log("Trying to join project");
-    const [checkError, projectResponse] = await joinProject(
-      projectId,
-      keycloak.subject,
-      keycloak.token
-    );
-    if (checkError !== null) {
-      setApiError(checkError);
-      console.log(checkError);
+    const [userError, userResponse] = await checkForUser(keycloak.subject);
+    if (userError !== null) {
+      setApiError(userError);
     }
-    if (projectResponse !== null) {
-      getProject(projectId);
-      console.log(projectResponse);
+    if (userResponse !== null) {
+      const [checkError, projectResponse] = await joinProject(
+        projectId,
+        userResponse,
+        keycloak.token
+      );
+      if (checkError !== null) {
+        setApiError(checkError);
+        console.log(checkError);
+      }
+      if (projectResponse !== null) {
+        getProject(projectId);
+        console.log(projectResponse);
+      }
     }
     setLoading(false);
   };
