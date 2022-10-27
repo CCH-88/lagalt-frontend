@@ -72,7 +72,7 @@ export async function insertProject(name) {
 
 }
 
-export async function joinProject(projectId, freelancer, token){
+export async function joinProject(projectId, freelancerId, token){
   try {
     const response = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/projects/join/${projectId}`, {
         method: 'POST',
@@ -81,7 +81,7 @@ export async function joinProject(projectId, freelancer, token){
             'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify({
-          freelancer
+          freelancerId
         })
     })
     if (!response.ok) {
