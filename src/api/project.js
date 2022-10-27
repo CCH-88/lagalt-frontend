@@ -71,3 +71,29 @@ export async function insertProject(name) {
   return await createProject(name);
 
 }
+
+export async function joinProject(projectId, freelancerId){
+  try {
+    const freelancer = { id: freelancerId }
+    const response = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/projects/join/${projectId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + keycloak.token
+        },
+        body: JSON.stringify({
+          freelancer
+        })
+    })
+    if (!response.ok) {
+        throw new Error('Could not join the project')
+    }
+    const result = await response.json()
+    console.log(result);
+    return [null, result]
+}
+catch (error) {
+    console.log(error);
+    return [error.message, null]
+}
+}

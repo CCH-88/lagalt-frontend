@@ -20,7 +20,10 @@ const PostMessage = ({ chat }) => {
     input.preventDefault();
     if (input.target.message.value.length < 1) {
     } else {
-      let message = keycloak.username + ": " + input.target.message.value;
+      let message =
+        keycloak.tokenParsed.preferred_username +
+        ": " +
+        input.target.message.value;
       console.log(chat.id);
       await chatAdd(chat.id, message, keycloak.subject, keycloak.token);
     }
