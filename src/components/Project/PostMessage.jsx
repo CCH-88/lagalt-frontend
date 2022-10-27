@@ -17,6 +17,7 @@ const PostMessage = ({ chat }) => {
   } = useForm();
 
   const onSubmitChatMessage = async (input) => {
+    console.log(input);
     input.preventDefault();
     if (input.target.message.value.length < 1) {
     } else {

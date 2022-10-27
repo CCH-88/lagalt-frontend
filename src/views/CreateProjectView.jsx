@@ -19,13 +19,19 @@ const CreateProjectView = () => {
   const onSubmit = async (input) => {
     let { projectname, projectdescription, projectfield, projectstatus } =
       input;
-    await projectAdd(
+    const [addError, addResponse] = await projectAdd(
       projectname,
       projectdescription,
       projectfield,
       projectstatus,
       keycloak
     );
+    if (addError !== null) {
+      console.log(addError);
+    }
+    if (addResponse !== null) {
+      console.log(addResponse);
+    }
   };
 
   const errorMessageProjectName = (() => {
@@ -93,170 +99,28 @@ const CreateProjectView = () => {
 
   return (
     <>
-      <>
-        <h1 className="font-bold text-3xl mb-1 p-4">Create Project</h1>
-        <div className="p-10">
-          <div className="max-w-sm w-full sm:max-w-full sm:flex rounded overflow-hidden shadow-lg p-2">
-            <div className=" bg-white max-w-sm w-full sm:max-w-full rounded-b md:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-              <div className="mb-8">
-                <div className="text-gray-900 font-bold text-xl mb-2">
-                  Project name
-                </div>
-                <form>
-                  <fieldset>
-                    <div className="w-full"></div>
-                    <label htmlFor="projectname"> </label>
-                    <textarea
-                      className="mx-4 border my-2 w-2/6 h-12 flex-wrap px-2"
-                      type="text"
-                      autoComplete="off"
-                      placeholder="Enter a name for your project here"
-                      {...register("projectname", inputConfig)}
-                    />
-                  </fieldset>
-                  {errorMessageProjectName}
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div className="max-w-sm w-full sm:max-w-full sm:flex rounded overflow-hidden shadow-lg p-2">
-            <div className=" bg-white max-w-sm w-full sm:max-w-full rounded-b sm:rounded-b-none sm:rounded-r p-4 flex flex-col justify-between leading-normal">
-              <div className="mb-8">
-                <div className="text-gray-900 font-bold text-xl mb-2">
-                  Project description
-                </div>
-                <form className="w-full">
-                  <fieldset>
-                    <div className="w-full"></div>
-                    <label htmlFor="projectdescription"> </label>
-                    <textarea
-                      className="mx-4 border my-2 w-2/6 h-12 flex-wrap px-2"
-                      type="text"
-                      autoComplete="off"
-                      placeholder="Type a description here"
-                      {...register("projectdescription", inputConfig)}
-                    />
-                  </fieldset>
-                </form>
-                {errorMessageDescription}
-              </div>
-            </div>
-          </div>
-          <div className="max-w-sm w-full sm:max-w-full sm:flex rounded overflow-hidden shadow-lg p-2">
-            <div className=" bg-white max-w-sm w-full sm:max-w-full rounded-b sm:rounded-b-none sm:rounded-r p-4 flex flex-col justify-between leading-normal">
-              <div className="mb-8">
-                <div className="text-gray-900 font-bold text-xl mb-2">
-                  Project Image
-                </div>
-                <form className="w-full">
-                  <fieldset>
-                    <div className="w-full"></div>
-                    <label htmlFor="projectimageurl"> </label>
-                    <textarea
-                      className="mx-4 border my-2 w-2/6 h-12 flex-wrap px-2"
-                      type="text"
-                      autoComplete="off"
-                      placeholder="Type a link to an image here"
-                      {...register("projectimageurl")}
-                    />
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div className="max-w-sm w-full sm:max-w-full sm:flex rounded overflow-hidden shadow-lg p-2">
-            <div className=" bg-white max-w-sm w-full sm:max-w-full rounded-b sm:rounded-b-none sm:rounded-r p-4 flex flex-col justify-between leading-normal">
-              <div className="mb-8">
-                <div className="text-gray-900 font-bold text-xl mb-2">
-                  Project field
-                </div>
-                <form className="w-full">
-                  <fieldset>
-                    <div className="w-full"></div>
-                    <label htmlFor="projectfield"> </label>
-                    <select
-                      className="mx-4 border my-2 w-2/6 h-12 flex-wrap px-2"
-                      defaultValue={""}
-                      {...register("projectfield", inputConfig)}
-                    >
-                      <option value={""} disabled>
-                        Choose an option
-                      </option>
-                      <option value="music">Music</option>
-                      <option value="film">Film</option>
-                      <option value="game-development">Game development</option>
-                      <option value="web-development">Web development</option>
-                    </select>
-                  </fieldset>
-                </form>
-                {errorMessageField}
-              </div>
-            </div>
-          </div>
-          <div className="max-w-sm w-full sm:max-w-full sm:flex rounded overflow-hidden shadow-lg p-2">
-            <div className=" bg-white max-w-sm w-full sm:max-w-full rounded-b sm:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-              <div className="mb-8">
-                <div className="text-gray-900 font-bold text-xl mb-2">
-                  Project status
-                </div>
-                <form className="w-full">
-                  <fieldset>
-                    <div className="w-full"></div>
-                    <label htmlFor="projectstatus"> </label>
-                    <select
-                      className="mx-4 border my-2 w-2/6 h-12 flex-wrap px-2"
-                      defaultValue={""}
-                      {...register("projectstatus", inputConfig)}
-                    >
-                      <option value={""} disabled>
-                        Choose an option
-                      </option>
-                      <option value="not_started">Not started</option>
-                      <option value="in_progress">In progress</option>
-                      <option value="halted">Halted</option>
-                      <option value="finished">Finished</option>
-                      <option value="founding">Founding</option>
-                    </select>
-                  </fieldset>
-                </form>
-                {errorMessageStatus}
-              </div>
-            </div>
-          </div>
-          <div className="max-w-sm w-full sm:max-w-full sm:flex rounded overflow-hidden shadow-lg p-2">
-            <div className=" bg-white max-w-sm w-full sm:max-w-full rounded-b sm:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-              <div className="mb-8"></div>
-              <button
-                onClick={handleSubmit(onSubmit)}
-                className="className= bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-2">
-                Create project
-              </button>
-            </div>
-          </div>
+      <div className="w-full h-full inline-block">
+        <div className="flex w-11/12 h-16 bg-white mx-auto mt-12 mb-1">
+          <p className="text-2xl mx-4 my-auto">Create new project</p>
         </div>
-      </>
-      <>
-        {/*<div className="w-full h-full inline-block">
-      <h1 className="font-bold text-3xl mb-1 p-4">Create new project</h1>
-      <div className="flex flex-wrap w-11/12  bg-white mx-auto mt-8 mb-2">
-        <div className="w-full"></div>
-        <form className="w-full">
-          <fieldset>
-            <p className="text-xl mx-4 my-2 inline-block">Project name</p>
-            <div className="w-full"></div>
-            <label htmlFor="projectname"> </label>
-            <textarea
-              className="mx-4 border my-2 w-2/6 h-12 flex-wrap px-2"
-              type="text"
-              autoComplete="off"
-              placeholder="Enter a name for your project here"
-              {...register("projectname", inputConfig)}
-            />
-          </fieldset>
-        </form>
-        {errorMessageProjectName}
-      </div>
+        <div className="flex flex-wrap w-11/12  bg-white mx-auto mt-8 mb-2">
+          <div className="w-full"></div>
+          <form className="w-full">
+            <fieldset>
+              <p className="text-xl mx-4 my-2 inline-block">Project name</p>
+              <div className="w-full"></div>
+              <label htmlFor="projectname"> </label>
+              <textarea
+                className="mx-4 border my-2 w-2/6 h-12 flex-wrap px-2"
+                type="text"
+                autoComplete="off"
+                placeholder="Enter a name for your project here"
+                {...register("projectname", inputConfig)}
+              />
+            </fieldset>
+          </form>
+          {errorMessageProjectName}
+        </div>
         <div className="flex flex-wrap w-11/12  bg-white mx-auto mb-2">
           <div className="w-full"></div>
           <form className="w-full">
@@ -348,8 +212,8 @@ const CreateProjectView = () => {
           >
             Create project
           </button>
-        </div>*/}
-      </>
+        </div>
+      </div>
     </>
   );
 };
