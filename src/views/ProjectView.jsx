@@ -78,7 +78,8 @@ function ProjectView() {
     console.log("Trying to join project");
     const [checkError, projectResponse] = await joinProject(
       projectId,
-      keycloak.subject
+      keycloak.subject,
+      keycloak.token
     );
     if (checkError !== null) {
       setApiError(checkError);
