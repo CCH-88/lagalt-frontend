@@ -1,5 +1,15 @@
 import { Link } from "react-router-dom";
 
+const randomPicture = () => {
+  let randomNumber;
+
+  randomNumber = Math.floor(Math.random() * 100);
+
+  let aRandomPicture = "https://loremflickr.com/640/480/cat?random=" + randomNumber;
+
+  return aRandomPicture;
+};
+
 function ListProjectCard({ project }) {
   return (
     <div className="max-w-sm w-full lg:max-w-full lg:flex rounded overflow-hidden shadow-lg p-2">
@@ -9,7 +19,7 @@ function ListProjectCard({ project }) {
       >
         <img
           className="w-full h-full"
-          src={"https://loremflickr.com/640/480/cat"} //Hardcoded temporarily for presentation. Insert the following when db allows for links... project.projectImages[0]
+          src={randomPicture()} //Hardcoded temporarily for presentation. Insert the following when db allows for links... project.projectImages[0]
           alt="project image"
         ></img>
       </div>
