@@ -15,8 +15,10 @@ function ProjectList({ projectsList }) {
   }, []);
 
   useEffect(() => {
-    if(projects.length > 0){
-      setTempProjects(projects.filter(project => project.field == filterTextValue))
+    if(projects.length > 0){      
+      setTempProjects(projects.filter(function (project) {
+          return project.field == filterTextValue;
+        }))
       if(filterTextValue == "all"){
         setTempProjects(projects)
       }
