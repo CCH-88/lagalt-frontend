@@ -76,6 +76,25 @@ function ProjectView() {
   const tryJoinProject = async () => {
     setLoading(true);
     console.log("Trying to join project");
+    const [checkError, projectResponse] = await joinProject(
+      projectId,
+      keycloak.subject,
+      keycloak.token
+    );
+    if (checkError !== null) {
+      setApiError(checkError);
+      console.log(checkError);
+    }
+    if (projectResponse !== null) {
+      getProject(projectId);
+      console.log(projectResponse);
+    }
+    setLoading(false);
+  };
+  /*
+  const tryJoinProject = async () => {
+    setLoading(true);
+    console.log("Trying to join project");
     const [userError, userResponse] = await checkForUser(keycloak.subject);
     if (userError !== null) {
       setApiError(userError);
@@ -97,7 +116,7 @@ function ProjectView() {
     }
     setLoading(false);
   };
-
+*/
   const sortMessages = (chat) => {
     chat.sort(function (a, b) {
       return new Date(a.dateTime) - new Date(b.dateTime);
