@@ -27,10 +27,10 @@ const CreateProjectView = () => {
       keycloak
     );
     if (addError !== null) {
-      console.log(addError);
+      console.log("addError" + addError);
     }
     if (addResponse !== null) {
-      console.log(addResponse);
+      console.log("addResponse" + addResponse);
     }
   };
 
