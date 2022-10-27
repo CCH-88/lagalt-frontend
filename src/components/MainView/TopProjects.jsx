@@ -1,7 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const baseUrl = "https://633fd672d1fcddf69caaa419.mockapi.io/api/v1";
+const randomPicture = () => {
+    let randomNumber;
+
+    randomNumber = Math.floor(Math.random() * 100);
+
+    let aRandomPicture = "https://loremflickr.com/640/480/dog?random=" + randomNumber;
+
+    return aRandomPicture;
+};
+
+
 
 function TopProjects({ projectsList }) {
   const [projects, setProjects] = useState([]);
@@ -14,11 +24,14 @@ function TopProjects({ projectsList }) {
     <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
       {projects.slice(0, 3).map((project) => {
         return (
-          <div key={project.id} className="max-w-sm w-full lg:max-w-full rounded overflow-hidden shadow-lg bg-white">
+          <div
+            key={project.id}
+            className="max-w-sm w-full lg:max-w-full rounded overflow-hidden shadow-lg bg-white"
+          >
             <div className="max-w-sm w-full lg:max-w-full rounded overflow-hidden bg-white">
               <img
                 className="w-full"
-                src={"https://loremflickr.com/640/480/dog"} //Added some hardcoded temporarily for presentation. Insert the following when db allows for links... project.projectImages[0]
+                src={randomPicture()} //Added some hardcoded temporarily for presentation. Insert the following when db allows for links... project.projectImages[0]
                 alt="Picture could not load"
               ></img>
             </div>
