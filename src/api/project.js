@@ -72,9 +72,8 @@ export async function insertProject(name) {
 
 }
 
-export async function joinProject(projectId, freelancerId, token){
+export async function joinProject(projectId, freelancer, token){
   try {
-    const freelancer = { id: freelancerId }
     const response = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/projects/join/${projectId}`, {
         method: 'POST',
         headers: {
