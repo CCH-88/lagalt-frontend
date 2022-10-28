@@ -72,24 +72,23 @@ export async function insertProject(name) {
 
 }
 
-export async function joinProject(projectId, freelancerId, token){
+export async function joinProject(projectId, freelancerId, token, motivation){
   try {
-    const response = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/projects/join/${projectId}`, {
+    const response = await fetch(import.meta.env.VITE_BACKEND_URL + `/api/v1/projects/${projectId}/${freelancerId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify({
-          freelancerId
+          motivation: motivation
         })
     })
     if (!response.ok) {
         throw new Error('Could not join the project')
     }
-    const result = await response.json()
-    console.log(result);
-    return [null, result]
+    
+    return [null, response.status]
 }
 catch (error) {
     console.log(error);
